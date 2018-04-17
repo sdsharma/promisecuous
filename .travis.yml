@@ -10,6 +10,8 @@ addons:
 before_script:
   - "sudo chown root /opt/google/chrome/chrome-sandbox"
   - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+  - npm install -g firebase-tools
+  - npm install -g @angular/cli
 
 stages:
   - test
@@ -20,23 +22,14 @@ stages:
 jobs:
   include:
   - stage: test
-    before_script:
-      - npm install -g firebase-tools
-      - npm install -g @angular/cli
     script:
       - ng test
   - stage: deploystaging
-    before_script:
-      - npm install -g firebase-tools
-      - npm install -g @angular/cli
     script:
       - npm run-script build-dev
     after_success:
       - firebase deploy -P staging --token $FIREBASE_TOKEN
   - stage: deployprod
-    before_script:
-      - npm install -g firebase-tools
-      - npm install -g @angular/cli
     script:
       - npm run-script build
     after_success:
