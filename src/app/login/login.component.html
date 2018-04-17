@@ -1,0 +1,20 @@
+<div class="login-wrapper">
+    <form class="login">
+        <label class="title">
+            <h3 class="welcome">Welcome to</h3>
+            Promisecuous
+        </label>
+        <div class="login-group">
+            <form [formGroup]="model">
+                <div>
+                    <input class="username" type="text" placeholder="Email" formControlName="email">
+                </div>
+                <div>
+                    <input class="password" type="password" placeholder="Password" formControlName="password">
+                </div>
+            </form>
+            <p *ngIf="loginFail == true">Login Failed</p>
+            <button type="submit" class="btn btn-success" (click)="login()">Login</button>
+        </div>
+    </form>
+</div>

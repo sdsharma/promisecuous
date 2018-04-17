@@ -1,0 +1,12 @@
+<app-header></app-header>
+<nav class="subnav">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="./promise" routerLinkActive="active" (click)="changeCategory('promise')">Promise</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="./cuous" routerLinkActive="active" (click)="changeCategory('cuous')">Cuous</a>
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
