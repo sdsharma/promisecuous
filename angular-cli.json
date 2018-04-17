@@ -1,7 +1,7 @@
 {
     "project": {
-        "version": "1.5.2",
-        "name": "mylive"
+        "version": "1.0.0",
+        "name": "promisecuous"
     },
     "apps": [
         {
