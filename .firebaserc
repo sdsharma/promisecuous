@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "promisecuous-prod"
+    "default": "promisecuous-prod",
+    "staging": "promisecuous-test"
   }
 }

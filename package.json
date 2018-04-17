@@ -10,6 +10,7 @@
     "pree2e": "webdriver-manager update",
     "e2e": "protractor protractor.config.js",
     "build": "ng build --prod --aot=false",
+    "build-dev": "ng build --dev --aot=false",
     "start-prod": "ng serve --prod --aot=false"
   },
   "repository": {
