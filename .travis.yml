@@ -26,7 +26,7 @@ jobs:
       - npm run-script build-dev
     after_success:
       - firebase deploy -P staging --token $FIREBASE_TOKEN
-  - stage: Deploy to Production Environment
+  - stage: deployprod
     before_script:
       - npm install -g firebase-tools
       - npm install -g @angular/cli
