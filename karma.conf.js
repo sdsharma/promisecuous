@@ -10,7 +10,8 @@ module.exports = function (config) {
             require('karma-phantomjs-launcher'),
             require('karma-mocha-reporter'),
             require('karma-remap-istanbul'),
-            require('@angular/cli/plugins/karma')
+            require('@angular/cli/plugins/karma'),
+            require('karma-chrome-launcher')
         ],
         files: [
             {pattern: './src/test.ts', watched: false}
@@ -31,6 +32,17 @@ module.exports = function (config) {
             config: './angular-cli.json',
             environment: 'dev'
         },
+        customLaunchers: {
+          ChromeHeadless: {
+            base: 'Chrome',
+            flags: [
+              '--headless',
+              '--disable-gpu',
+              // Without a remote debugging port, Google Chrome exits immediately.
+              '--remote-debugging-port=9222',
+            ],
+          }
+        },
         reporters: config.angularCli && config.angularCli.codeCoverage
             ? ['mocha', 'karma-remap-istanbul']
             : ['mocha'],
@@ -38,7 +50,7 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['PhantomJS'],
+        browsers: ['ChromeHeadless'],
         singleRun: true
     });
 };

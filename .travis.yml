@@ -4,13 +4,21 @@ language: node_js
 node_js:
   - "8.5.0"
 
-branches:
-  only:
-    - master
+stages:
+  - test
+  - deploystaging
+  - name: deployprod
+    if: branch = master
 
 jobs:
   include:
-  - stage: Deploy to Staging Environment
+  - stage: test
+    before_script:
+      - npm install -g firebase-tools
+      - npm install -g @angular/cli
+    script:
+      - ng test
+  - stage: deploystaging
     before_script:
       - npm install -g firebase-tools
       - npm install -g @angular/cli
