@@ -32,7 +32,7 @@ jobs:
       - npm run-script coverage
       - npm run-script build-dev
     after_success:
-      - firebase deploy -P staging --token $FIREBASE_TOKEN
+      - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash firebase deploy -P staging --token $FIREBASE_TOKEN; fi'
 
 notifications:
   email:
