@@ -11,7 +11,8 @@
     "e2e": "protractor protractor.config.js",
     "build": "ng build --prod --aot=false",
     "build-dev": "ng build --dev --aot=false",
-    "start-prod": "ng serve --prod --aot=false"
+    "start-prod": "ng serve --prod --aot=false",
+    "coverage": "ng test --code-coverage --reporters=teamcity,coverage-istanbul"
   },
   "repository": {
     "type": "git",
@@ -77,10 +78,12 @@
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-cli": "^1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.4.2",
     "karma-jasmine": "^1.1.0",
     "karma-mocha-reporter": "^2.2.5",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-remap-istanbul": "^0.6.0",
+    "karma-teamcity-reporter": "^1.1.0",
     "protractor": "5.2.0",
     "ts-node": "3.3.0",
     "tslint": "^4.5.1",

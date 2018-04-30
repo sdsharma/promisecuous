@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClarityModule } from 'clarity-angular';
 import { HeaderComponent } from './header/header.component';
+import { PeterTestComponent } from './peter-test/peter-test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -13,10 +14,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   declarations: [
     HeaderComponent,
+    PeterTestComponent
 ],
   exports: [
     CommonModule,
     HeaderComponent,
+    PeterTestComponent
   ]
 })
 export class SharedModule {

@@ -11,8 +11,20 @@ module.exports = function (config) {
             require('karma-mocha-reporter'),
             require('karma-remap-istanbul'),
             require('@angular/cli/plugins/karma'),
-            require('karma-chrome-launcher')
+            require('karma-chrome-launcher'),
+            require('karma-coverage-istanbul-reporter'),
+            require('karma-teamcity-reporter')
         ],
+        coverageIstanbulReporter: {
+          reports: ['html', 'lcovonly'],
+          fixWebpackSourcePaths: true,
+          thresholds: {
+            statements: 50,
+            lines: 50,
+            branches: 50,
+            functions: 50
+          }
+        },
         files: [
             {pattern: './src/test.ts', watched: false}
         ],

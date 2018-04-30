@@ -14,9 +14,9 @@ before_script:
   - npm install -g @angular/cli
 
 stages:
-  - test
-  - deploystaging
-  - name: deployprod
+  - name: test
+    if: branch != master
+  - name: deploystaging
     if: branch = master
 
 jobs:
@@ -24,16 +24,15 @@ jobs:
   - stage: test
     script:
       - ng test
+      - npm run-script coverage
   - stage: deploystaging
     script:
+      - ng test
+      - npm run-script lint
+      - npm run-script coverage
       - npm run-script build-dev
     after_success:
       - firebase deploy -P staging --token $FIREBASE_TOKEN
-  - stage: deployprod
-    script:
-      - npm run-script build
-    after_success:
-      - firebase deploy --token $FIREBASE_TOKEN
 
 notifications:
   email:
