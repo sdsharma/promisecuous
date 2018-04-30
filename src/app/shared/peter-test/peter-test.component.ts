@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PeterTestComponent implements OnInit {
 
-  @Input() color: string
+  @Input() color: string;
   @Input() number: number;
   numbers: number[] = [];
 
