@@ -9,6 +9,6 @@ export class PromiseComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit():void {
+  ngOnInit(): void {
   }
 }

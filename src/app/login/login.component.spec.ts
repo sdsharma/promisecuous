@@ -16,7 +16,7 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        ReactiveFormsModule, 
+        ReactiveFormsModule,
         StoreModule.provideStore(appReducers),
         RouterTestingModule
       ],

@@ -5,7 +5,7 @@ import { DebugElement, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PeterTestComponent } from './peter-test.component';
 
 describe('PeterTestComponent', () => {
-  let component: PeterTestComponent
+  let component: PeterTestComponent;
   let fixture: ComponentFixture<PeterTestComponent>;
 
   beforeEach(async(() => {

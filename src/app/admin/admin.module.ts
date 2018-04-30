@@ -19,9 +19,9 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule.forRoot(),
   ],
   declarations: [
-  	AdminComponent,
-  	CuousComponent,
-  	PromiseComponent
+    AdminComponent,
+    CuousComponent,
+    PromiseComponent
   ]
 })
 export class AdminModule { }

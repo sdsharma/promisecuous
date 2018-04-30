@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private store: Store<AppState>, private router: Router) { }
-
   subroute: string;
 
-  ngOnInit():void {
-  	this.store.select((state: AppState) => {
-        return state.view;
+  constructor(private store: Store<AppState>, private router: Router) { }
+
+  ngOnInit(): void {
+    this.store.select((state: AppState) => {
+      return state.view;
     }).subscribe((view: ViewState) => {
       this.subroute = view.subroute;
     });

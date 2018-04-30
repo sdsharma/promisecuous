@@ -1,5 +1,5 @@
 import { AppState, INITIAL_APP_STATE } from '../../store/state';
-import { StoreModule, combineReducers, ActionReducer } from "@ngrx/store";
+import { combineReducers, ActionReducer } from "@ngrx/store";
 import { UserReducer } from '../../store/reducers/userReducer';
 import { ViewReducer } from '../../store/reducers/viewReducer';
 import { DataReducer } from '../../store/reducers/dataReducer';

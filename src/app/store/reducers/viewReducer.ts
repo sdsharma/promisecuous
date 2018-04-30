@@ -1,4 +1,4 @@
-import { ActionReducer, Action } from "@ngrx/store";
+import { Action } from "@ngrx/store";
 import { ViewState, INITIAL_VIEW_STATE } from '../state';
 import { AppActions } from "../actions/appActions";
 

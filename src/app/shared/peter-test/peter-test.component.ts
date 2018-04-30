@@ -11,8 +11,8 @@ export class PeterTestComponent implements OnInit {
   @Input() number: number;
   numbers: number[] = [];
 
-  ngOnInit():void {
-    for(let i = 0; i < this.number; i++){
+  ngOnInit(): void {
+    for (let i = 0; i < this.number; i++) {
       this.numbers.push(0);
     }
   }

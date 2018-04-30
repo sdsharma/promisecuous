@@ -11,7 +11,7 @@ export class AccessControlGuard implements CanActivate {
 
     constructor(private store: Store<AppState>, private router: Router) {
         this.store.select((state: AppState) => {
-            return state.user
+            return state.user;
         }).subscribe((user: UserState) => {
             this.loggedIn = user.loggedIn;
         });
@@ -19,10 +19,10 @@ export class AccessControlGuard implements CanActivate {
 
     // canActivate gets fired activated on loading of the parent route and once on the hard reload of any child routes
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if(!this.loggedIn && !state.url.includes('login')){
+        if (!this.loggedIn && !state.url.includes('login')) {
             this.router.navigate(['/login']);
         } else {
             return true;
         }
-    }     
+    }
 }

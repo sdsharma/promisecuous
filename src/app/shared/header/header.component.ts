@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   subroute: string;
   constructor(private store: Store<AppState>, private router: Router) { }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.store.select((state: AppState) => {
         return state.view;
     }).subscribe((view: ViewState) => {
