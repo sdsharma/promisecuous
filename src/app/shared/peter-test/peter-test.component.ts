@@ -13,7 +13,7 @@ export class PeterTestComponent implements OnInit {
 
   ngOnInit(): void {
     for (let i = 0; i < this.number; i++) {
-      this.numbers.push(0);
+      this.numbers.push(1);
     }
   }
 
