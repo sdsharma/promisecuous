@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ClarityModule } from 'clarity-angular';
 import { HeaderComponent } from './header/header.component';
 import { PeterTestComponent } from './peter-test/peter-test.component';
+import { ProfileHeaderComponent } from './profileHeader/profileHeader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -14,12 +15,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   declarations: [
     HeaderComponent,
-    PeterTestComponent
+    PeterTestComponent,
+    ProfileHeaderComponent
 ],
   exports: [
     CommonModule,
     HeaderComponent,
-    PeterTestComponent
+    PeterTestComponent,
+    ProfileHeaderComponent
   ]
 })
 export class SharedModule {
