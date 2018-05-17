@@ -5,11 +5,11 @@ import { AppActions } from '../store/actions/appActions';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   subroute: string;
 

@@ -6,7 +6,7 @@ import { AccessControlGuard } from './shared/guards/accesscontrol.service';
 export const ROUTES: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
-    {path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivate: [AccessControlGuard]},
+    {path: 'home', loadChildren: './home/home.module#HomeModule', canActivate: [AccessControlGuard]},
 ];
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);

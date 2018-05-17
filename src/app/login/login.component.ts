@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         this.loggedIn = user.loggedIn;
         this.loginFail = user.loginFail;
         if (this.loggedIn) {
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/home']);
         }
     });
   }
