@@ -51,7 +51,7 @@ export function appReducers(state: AppState = INITIAL_APP_STATE, action: any) {
         HttpModule,
         ClarityModule.forRoot(),
         ROUTING,
-        SharedModule,
+        SharedModule.forRoot(),
         StoreModule.provideStore(appReducers),
         effects,
         AngularFireModule.initializeApp(environment.firebase),

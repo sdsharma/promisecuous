@@ -7,8 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <style>
+	    .spinner-top {
+	      position: fixed;
+	      display: inline-block;
+	      min-height: 63px;
+	      min-width: 63px;
+	      height: 63px;
+	      width: 63px;
+	      -webkit-animation: spin 1s linear infinite;
+	      animation: spin 1s linear infinite;
+	      margin: 0;
+	      padding: 0;
+	      background: url('./images/loading.svg');
+	      text-indent: 100%;
+	      overflow: hidden;
+	      left: 48vw;
+	      top: 45vh;
+	    }
+	  </style>
 </head>
 <body>
-<my-app>Loading Promisecuous...</my-app>
+<my-app><span class="spinner-top">Loading...</span></my-app>
 </body>
 </html>
