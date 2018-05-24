@@ -3,3 +3,7 @@
     height: auto !important;
     overflow: hidden !important;
 }
+
+button:focus {
+	outline: 0;
+}

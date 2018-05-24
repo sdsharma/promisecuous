@@ -1,6 +1,7 @@
 export interface UserState {
   loggedIn: boolean;
   loginFail: boolean;
+  userData: null;
 }
 
 export const INITIAL_USER_STATE: UserState = {

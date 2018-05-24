@@ -9,6 +9,8 @@ export function ViewReducer(state: ViewState = INITIAL_VIEW_STATE, action: Actio
         case AppActions.SET_SUB_ROUTE:
           newState.subroute = action.payload;
           return newState;
+        case AppActions.SUCCESSFUL_POST:
+        	return state;
         default:
             return state;
     }
