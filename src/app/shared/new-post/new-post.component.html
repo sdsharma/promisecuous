@@ -16,7 +16,7 @@
     </div>
     <div class="card-block">
         <div *ngIf="textActive">
-            <textarea rows="3" placeholder="Share your story here..."></textarea>
+            <textarea rows="3" placeholder="Share your story here..." [(ngModel)]="postText"></textarea>
         </div>
         <div *ngIf="!textActive">
         </div>

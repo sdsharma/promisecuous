@@ -1,3 +1,5 @@
+import { FirebaseListObservable } from 'angularfire2/database';
+
 export interface UserState {
   loggedIn: boolean;
   loginFail: boolean;
@@ -9,9 +11,13 @@ export const INITIAL_USER_STATE: UserState = {
   loginFail: false,
 };
 
-export interface ViewState {}
+export interface ViewState {
+  timelinePosts: FirebaseListObservable<any[]>;
+}
 
-export const INITIAL_VIEW_STATE: ViewState = {};
+export const INITIAL_VIEW_STATE: ViewState = {
+  timelinePosts: null
+};
 
 export interface DataState {}
 

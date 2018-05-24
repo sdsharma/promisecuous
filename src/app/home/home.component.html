@@ -5,8 +5,9 @@
     </div>
     <div class="col-xs-6 timeline">
         <new-post></new-post>
-        <h1>Timeline</h1>
-        <h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1><h1>Timeline</h1>
+        <ng-container *ngFor="let post of posts | async">
+            <user-post [post]="post"></user-post>
+        </ng-container>
     </div>
     <div class="col-xs-3">
     	<div class="card card-block ad-container">

@@ -36,15 +36,27 @@ export class AppEffects {
         .ofType(AppActions.NEW_PUBLIC_TEXT_POST)
         .map(toPayload)
         .switchMap(payload => {
-            let posts = this.db.list('/posts/' + payload.uid);
+            let posts = this.db.list(payload.uid + '/posts/');
             posts.push({
               type: 'text',
               timestamp: Date.now(),
-              content: payload.content
+              content: payload.content,
+              comments: []
             });
             return Observable.of({
                 type: AppActions.SUCCESSFUL_POST,
                 payload: null
+            });
+        });
+
+    @Effect() gettimelineposts$ = this.action$
+        .ofType(AppActions.GET_TIMELINE_POSTS)
+        .map(toPayload)
+        .switchMap(payload => {
+            let posts = this.db.list(payload + '/posts/', {query: {orderByChild: 'timestamp'}});
+            return Observable.of({
+                type: AppActions.RECEIVED_TIMELINE_POSTS,
+                payload: posts
             });
         });
 
