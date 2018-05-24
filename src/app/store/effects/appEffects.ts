@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/switchMap";
 import "rxjs/add/operator/catch";
-import 'rxjs/add/observable/of';
+import 'rxjs/observable/of';
 import { Http } from "@angular/http";
 import { AppActions } from "../actions/appActions";
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -30,6 +30,22 @@ export class AppEffects {
                 payload: credentials
               });
            });
+        });
+
+    @Effect() newpublictextpost$ = this.action$
+        .ofType(AppActions.NEW_PUBLIC_TEXT_POST)
+        .map(toPayload)
+        .switchMap(payload => {
+            let posts = this.db.list('/posts/' + payload.uid);
+            posts.push({
+              type: 'text',
+              timestamp: Date.now(),
+              content: payload.content
+            });
+            return Observable.of({
+                type: AppActions.SUCCESSFUL_POST,
+                payload: null
+            });
         });
 
     constructor(private action$: Actions, private _http: Http, private afAuth: AngularFireAuth, private db: AngularFireDatabase) { }
