@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState, UserState } from '../../store/state';
 import { AppActions } from '../../store/actions/appActions';
@@ -15,7 +15,7 @@ export class NewPostComponent implements OnInit {
 
   constructor(private store: Store<AppState>) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.store.select((state: AppState) => {
         return state.user;
     }).subscribe((user: UserState) => {
@@ -26,7 +26,7 @@ export class NewPostComponent implements OnInit {
   createPost(): void {
     if (this.textActive) {
       this.store.dispatch({type: AppActions.NEW_PUBLIC_TEXT_POST, payload: {
-        uid: this.credentials.uid, 
+        uid: this.credentials.uid,
         content: 'Hello world'
       }});
     } else {
