@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState, ViewState} from '../store/state';
+import { AppState } from '../store/state';
 import { AppActions } from '../store/actions/appActions';
 import { Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2/database';
@@ -14,7 +14,7 @@ import { FirebaseListObservable } from 'angularfire2/database';
 export class HomeComponent implements OnInit {
 
   subroute: string;
-  posts: FirebaseListObservable<any[]>; 
+  posts: FirebaseListObservable<any[]>;
   uid: string;
 
   constructor(private store: Store<AppState>, private router: Router) { }

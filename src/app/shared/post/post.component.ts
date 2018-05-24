@@ -8,9 +8,5 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PostComponent implements OnInit {
 
   @Input() post: any;
-  
-  ngOnInit(): void {
-  
-  }
-
+  ngOnInit(): void {}
 }
