@@ -4,6 +4,7 @@ import { ClarityModule } from 'clarity-angular';
 import { HeaderComponent } from './header/header.component';
 import { PeterTestComponent } from './peter-test/peter-test.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { PostComponent } from './post/post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -16,13 +17,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     HeaderComponent,
     PeterTestComponent,
-    NewPostComponent
+    NewPostComponent,
+    PostComponent
 ],
   exports: [
     CommonModule,
     HeaderComponent,
     PeterTestComponent,
-    NewPostComponent
+    NewPostComponent,
+    PostComponent
   ]
 })
 export class SharedModule {

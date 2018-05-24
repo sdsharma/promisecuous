@@ -11,6 +11,9 @@ export function ViewReducer(state: ViewState = INITIAL_VIEW_STATE, action: Actio
           return newState;
         case AppActions.SUCCESSFUL_POST:
           return state;
+        case AppActions.RECEIVED_TIMELINE_POSTS:
+          newState.timelinePosts = action.payload;
+          return newState; 
         default:
             return state;
     }

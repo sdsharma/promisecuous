@@ -12,6 +12,7 @@ export class NewPostComponent implements OnInit {
 
   textActive: boolean = true;
   credentials: any = null;
+  postText: string = '';
 
   constructor(private store: Store<AppState>) { }
 
@@ -27,8 +28,9 @@ export class NewPostComponent implements OnInit {
     if (this.textActive) {
       this.store.dispatch({type: AppActions.NEW_PUBLIC_TEXT_POST, payload: {
         uid: this.credentials.uid,
-        content: 'Hello world'
+        content: this.postText
       }});
+      this.postText = '';
     } else {
 
     }
