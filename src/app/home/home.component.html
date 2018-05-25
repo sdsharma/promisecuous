@@ -6,7 +6,7 @@
     <div class="col-xs-6 timeline">
         <new-post></new-post>
         <ng-container *ngFor="let post of posts | async">
-            <user-post [post]="post"></user-post>
+            <user-post [post]="post" [uid]="uid"></user-post>
         </ng-container>
     </div>
     <div class="col-xs-3">

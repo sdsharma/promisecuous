@@ -8,4 +8,5 @@ export class AppActions {
   static SUCCESSFUL_POST: string = "SUCCESSFUL_POST";
   static GET_TIMELINE_POSTS: string = "GET_TIMELINE_POSTS";
   static RECEIVED_TIMELINE_POSTS: string = "RECEIVED_TIMELINE_POSTS";
+  static LIKE_TIMELINE_POST: string = "LIKE_TIMELINE_POST";
 }
