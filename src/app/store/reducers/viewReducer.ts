@@ -16,7 +16,7 @@ export function ViewReducer(state: ViewState = INITIAL_VIEW_STATE, action: Actio
           return newState;
         case AppActions.LIKE_TIMELINE_POST:
           let containedIndex = action.payload.post.likes.indexOf(action.payload.uid);
-          if(containedIndex > -1){
+          if (containedIndex > -1) {
             action.payload.post.likes.splice(containedIndex, 1);
           } else {
             action.payload.post.likes.push(action.payload.uid);
