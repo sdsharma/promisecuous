@@ -23,6 +23,10 @@ export function ViewReducer(state: ViewState = INITIAL_VIEW_STATE, action: Actio
           }
           state.timelinePosts.update(action.payload.post.$key, {likes: action.payload.post.likes});
           return state;
+        case AppActions.POST_COMMENT:
+          action.payload.post.comments.push({timestamp: Date.now(), content: action.payload.comment, uid: action.payload.uid});
+          state.timelinePosts.update(action.payload.post.$key, {comments: action.payload.post.comments});
+          return state;
         default:
             return state;
     }

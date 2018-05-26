@@ -11,8 +11,26 @@ import { AppActions } from '../../store/actions/appActions';
 export class PostComponent implements OnInit {
   @Input() post: any;
   @Input() uid: string = '';
+  showCommentBox: boolean = false;
+  comment: string = '';
+
   constructor(private store: Store<AppState>) { }
-  ngOnInit(): void {
+
+  ngOnInit(): void { }
+
+  postComment(): void {
+    if ( !this.post.comments ) {
+      this.post.comments = [];
+    }
+    this.store.dispatch({type: AppActions.POST_COMMENT, payload: {comment: this.comment, post: this.post, uid: this.uid}});
+  }
+
+  getCommentCount(): number {
+    if (this.post.comments) {
+      return this.post.comments.length;
+    } else {
+      return 0;
+    }
   }
 
   like(): void {
