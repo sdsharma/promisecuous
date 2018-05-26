@@ -61,6 +61,7 @@ export class AppEffects {
             });
         });
 
+
     constructor(private action$: Actions, private _http: Http, private afAuth: AngularFireAuth, private db: AngularFireDatabase) { }
 
 }

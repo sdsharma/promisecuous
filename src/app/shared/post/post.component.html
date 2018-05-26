@@ -13,10 +13,19 @@
             <clr-icon shape="thumbs-up"></clr-icon>
             Unlike ({{getLikeCount()}})
         </button>
-        <button class="btn">
+        <button class="btn" (click)="showCommentBox = !showCommentBox">
             <clr-icon shape="talk-bubbles"></clr-icon>
-            Comment
+            Comments ({{getCommentCount()}})
         </button>
+    </div>
+    <div class="card-block" *ngIf="showCommentBox">
+        <ng-container *ngFor="let com of post.comments">
+             <p class="label label-info large-text">{{com.content}}</p>
+             <br>
+        </ng-container>
+        <br>
+        <input class="comment-input" type="text" [(ngModel)]="comment" placeholder="Insert comment here...">
+        <button type="button" class="btn btn-primary btn-sm btn-comment" (click)="postComment()">Comment</button>
     </div>
     </div>
 </div>
