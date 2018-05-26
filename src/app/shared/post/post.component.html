@@ -4,10 +4,14 @@
 </div>
 
 <div class="card-footer">
-    <div clss="btn-group btn-primary">
-        <button class="btn">
+    <div clss="btn-group btn-outline-primary">
+        <button *ngIf="!liked()" class="btn" (click)="like()">
             <clr-icon shape="thumbs-up"></clr-icon>
-            Like
+            Like ({{getLikeCount()}})
+        </button>
+        <button *ngIf="liked()" class="btn" (click)="like()">
+            <clr-icon shape="thumbs-up"></clr-icon>
+            Unlike ({{getLikeCount()}})
         </button>
         <button class="btn">
             <clr-icon shape="talk-bubbles"></clr-icon>

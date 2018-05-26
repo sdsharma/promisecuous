@@ -41,7 +41,8 @@ export class AppEffects {
               type: 'text',
               timestamp: Date.now(),
               content: payload.content,
-              comments: []
+              comments: [],
+              likes: []
             });
             return Observable.of({
                 type: AppActions.SUCCESSFUL_POST,
