@@ -5,7 +5,6 @@ import { AppActions } from '../store/actions/appActions';
 import { Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2/database';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
