@@ -3,12 +3,15 @@ import { FirebaseListObservable } from 'angularfire2/database';
 export interface UserState {
   loggedIn: boolean;
   loginFail: boolean;
-  userData: null;
+  userData: any;
 }
 
 export const INITIAL_USER_STATE: UserState = {
   loggedIn: false,
   loginFail: false,
+  userData: {
+    uid: ''
+  }
 };
 
 export interface ViewState {
