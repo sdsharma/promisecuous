@@ -9,7 +9,7 @@ import { AppActions } from '../../store/actions/appActions';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  @Input() post: any;
+  @Input() post: any = {};
   @Input() uid: string = '';
   showCommentBox: boolean = false;
   comment: string = '';
