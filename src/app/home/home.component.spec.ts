@@ -9,6 +9,10 @@ import { HomeComponent } from './home.component';
 import { appReducers } from '../shared/functions/reducerTest';
 import { SharedModule } from '../shared/shared.module';
 import { AdsenseModule } from 'ng2-adsense';
+import { ClarityModule } from 'clarity-angular';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../../environments/environment';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -25,6 +29,9 @@ describe('HomeComponent', () => {
           adClient: 'ca-pub-7640562161899788',
           adSlot: 2930227358,
         }),
+        ClarityModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule
       ],
       declarations: [ HomeComponent ]
     })

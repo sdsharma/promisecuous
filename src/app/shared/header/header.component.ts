@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState, ViewState } from '../../store/state';
+import { AppState } from '../../store/state';
 import { AppActions } from '../../store/actions/appActions';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-header',
@@ -11,18 +12,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  subroute: string;
-  constructor(private store: Store<AppState>, private router: Router) { }
+  constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
-    this.store.select((state: AppState) => {
-        return state.view;
-    }).subscribe((view: ViewState) => {
-      this.subroute = view.subroute;
-    });
   }
 
   logout(): void {
+    this.afAuth.auth.signOut();
     this.store.dispatch({type: AppActions.LOGOUT, payload: null});
     this.router.navigate(['login']);
   }
