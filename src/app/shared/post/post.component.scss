@@ -14,3 +14,17 @@
 .img-restrict {
 	width: 100%;
 }
+.remove-margin {
+	margin-top: 0!important;
+}
+.no-photo-constrain {
+	padding: 2px;
+    border: 1px solid;
+    border-radius: 50%;
+    margin-top: -2px;
+}
+.avatar-constrain {
+	max-width: 20px;
+	border-radius: 50%;
+    margin-top: -2px;
+}

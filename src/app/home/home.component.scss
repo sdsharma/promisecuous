@@ -14,3 +14,18 @@
 	overflow-y: scroll;
 	padding-bottom: 80px;
 }
+
+.center-text {
+	text-align: center;
+}
+
+.avatar-constrain {
+	max-width: 100px;
+	border-radius: 50%;
+}
+
+.no-photo-constrain {
+	padding: 12px;
+    border: 1px solid;
+    border-radius: 50%;
+}

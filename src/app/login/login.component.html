@@ -3,17 +3,18 @@
         <label class="title">
             <h3 class="welcome">Welcome to</h3>
             Promisecuous
+            <h5 class="welcome callout"><clr-icon shape="lock" class="align-icon"></clr-icon>Encrypted, <clr-icon shape="eye-hide" class="align-icon"></clr-icon>Private, <clr-icon shape="firewall" class="align-icon"></clr-icon>Safe</h5>
         </label>
         <div class="login-group">
-            
-                <div>
-                    <input class="username" type="text" placeholder="Email" formControlName="email">
-                </div>
-                <div>
-                    <input class="password" type="password" placeholder="Password" formControlName="password">
-                </div>
+            <div>
+                <input class="username" type="text" placeholder="Email" formControlName="email">
+            </div>
+            <div>
+                <input class="password" type="password" placeholder="Password" formControlName="password">
+            </div>
             <p *ngIf="loginFail == true">Login Failed</p>
-            <button type="submit" class="btn btn-success" (click)="login()">Login</button>
+            <button type="submit" class="btn btn-success login-btn" (click)="login()">Login</button>
+            <button class="btn btn-warning login-btn" (click)="loginGoogle()">Login with Google</button>
         </div>
     </form>
 </div>

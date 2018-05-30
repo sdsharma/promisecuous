@@ -4,6 +4,7 @@ import { AppState } from '../store/state';
 import { AppActions } from '../store/actions/appActions';
 import { Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,9 @@ export class HomeComponent implements OnInit {
 
   subroute: string;
   posts: FirebaseListObservable<any[]>;
-  uid: string;
+  userData: any;
 
-  constructor(private store: Store<AppState>, private router: Router) { }
+  constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.store.select((state: AppState) => {
@@ -24,10 +25,16 @@ export class HomeComponent implements OnInit {
     }).subscribe((state: AppState) => {
       this.subroute = state.view.subroute;
       this.posts = state.view.timelinePosts;
-      this.uid = state.user.userData.uid;
+      this.userData = state.user.userData;
     });
 
-    this.store.dispatch({type: AppActions.GET_TIMELINE_POSTS, payload: this.uid});
+    this.store.dispatch({type: AppActions.GET_TIMELINE_POSTS, payload: this.userData.uid});
+  }
+
+  logout(): void {
+    this.afAuth.auth.signOut();
+    this.store.dispatch({type: AppActions.LOGOUT, payload: null});
+    this.router.navigate(['login']);
   }
 
   changeCategory(category: string): void {

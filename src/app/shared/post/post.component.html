@@ -1,6 +1,11 @@
 <div class="card">
+    <div class="card-header">
+        <clr-icon *ngIf="!displayImage" shape="user" size="20" class="no-photo-constrain"></clr-icon>
+        <img *ngIf="displayImage" src={{displayImage}} class="avatar-constrain" />
+        {{displayName}}
+    </div>
     <div class="card-block">
-        <b *ngIf="post.type == 'text'">{{post.content}}</b>
+        <h5 *ngIf="post.type == 'text'" class="remove-margin">{{post.content}}</h5>
         <img class="img-restrict" *ngIf="post.type == 'photo'" src={{post.content}} />
     </div>
     <div class="card-footer">

@@ -7,6 +7,10 @@ import { StoreModule } from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './header.component';
 import { appReducers } from '../functions/reducerTest';
+import { ClarityModule } from 'clarity-angular';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../../../environments/environment';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -17,7 +21,10 @@ describe('HeaderComponent', () => {
       imports: [
         ReactiveFormsModule,
         StoreModule.provideStore(appReducers),
-        RouterTestingModule
+        RouterTestingModule,
+        ClarityModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule
       ],
       declarations: [ HeaderComponent ]
     })
