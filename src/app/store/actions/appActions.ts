@@ -5,6 +5,7 @@ export class AppActions {
   static LOGOUT: string = "LOGOUT";
   static SET_SUB_ROUTE: string = "SET_SUB_ROUTE";
   static NEW_PUBLIC_TEXT_POST: string = "NEW_PUBLIC_TEXT_POST";
+  static NEW_PUBLIC_PHOTO_POST: string = "NEW_PUBLIC_PHOTO_POST";
   static SUCCESSFUL_POST: string = "SUCCESSFUL_POST";
   static GET_TIMELINE_POSTS: string = "GET_TIMELINE_POSTS";
   static RECEIVED_TIMELINE_POSTS: string = "RECEIVED_TIMELINE_POSTS";
