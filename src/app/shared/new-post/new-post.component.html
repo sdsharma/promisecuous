@@ -3,16 +3,14 @@
         Make a Post
     </div>
     <div class="card-block">
-        <clr-tabs>
-            <clr-tab>
-                <button clrTabLink>Text</button>
-                <ng-template [(clrIfActive)]="textActive">
-                </ng-template>
-            </clr-tab>
-            <clr-tab>
-                <button clrTabLink>Photo</button>
-            </clr-tab>
-        </clr-tabs>
+        <ul class="nav" role="tablist">
+            <li role="presentation" class="nav-item">
+                <button class="btn btn-link nav-link" [class.active]="textActive" aria-selected="true" type="button" (click)="changeTab(true)">Text</button>
+            </li>
+            <li role="presentation" class="nav-item">
+                <button class="btn btn-link nav-link" [class.active]="!textActive" aria-selected="false" type="button" (click)="changeTab(false)">Photo</button>
+            </li>
+        </ul>
     </div>
     <div class="card-block">
         <div *ngIf="textActive">
@@ -25,7 +23,6 @@
                 <input type="file" imageUpload [resizeOptions]="options" (imageSelected)="selectedImage($event)">
                 <span *ngIf="!postImage"><clr-icon shape="upload" size="16"></clr-icon>Upload Photo</span>
                 <span *ngIf="postImage"><clr-icon shape="upload" size="16"></clr-icon>Change Photo</span>
-
             </label>
         </div>
     </div>

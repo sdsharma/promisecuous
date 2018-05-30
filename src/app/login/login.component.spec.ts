@@ -8,9 +8,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login.component';
 import { appReducers } from '../shared/functions/reducerTest';
 import { ClarityModule } from 'clarity-angular';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireModule } from 'angularfire2';
-import { environment } from '../../environments/environment';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -22,9 +19,7 @@ describe('LoginComponent', () => {
         ReactiveFormsModule,
         StoreModule.provideStore(appReducers),
         RouterTestingModule,
-        ClarityModule.forRoot(),
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireAuthModule
+        ClarityModule.forRoot()
       ],
       declarations: [ LoginComponent ]
     })

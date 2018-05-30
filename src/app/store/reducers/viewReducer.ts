@@ -10,7 +10,7 @@ export function ViewReducer(state: ViewState = INITIAL_VIEW_STATE, action: Actio
           newState.subroute = action.payload;
           return newState;
         case AppActions.SUCCESSFUL_POST:
-          return state;
+          return newState;
         case AppActions.RECEIVED_TIMELINE_POSTS:
           newState.timelinePosts = action.payload;
           return newState;
@@ -22,11 +22,11 @@ export function ViewReducer(state: ViewState = INITIAL_VIEW_STATE, action: Actio
             action.payload.post.likes.push(action.payload.uid);
           }
           state.timelinePosts.update(action.payload.post.$key, {likes: action.payload.post.likes});
-          return state;
+          return newState;
         case AppActions.POST_COMMENT:
           action.payload.post.comments.push({timestamp: Date.now(), content: action.payload.comment, uid: action.payload.uid});
           state.timelinePosts.update(action.payload.post.$key, {comments: action.payload.post.comments});
-          return state;
+          return newState;
         default:
             return state;
     }

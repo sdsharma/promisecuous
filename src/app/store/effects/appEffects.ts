@@ -34,6 +34,22 @@ export class AppEffects {
            });
         });
 
+    @Effect() logingoogle$ = this.action$
+        .ofType(AppActions.LOGIN_GOOGLE)
+        .map(toPayload)
+        .switchMap(payload => {
+            return Observable.fromPromise(this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()))
+            .catch(err => {
+                return Observable.of({ type: AppActions.LOGIN_FAILED });
+            })
+            .switchMap(credentials => {
+              return Observable.of({
+                type: AppActions.LOGGED_IN,
+                payload: credentials.user
+              });
+           });
+        });
+
     @Effect() newpublictextpost$ = this.action$
         .ofType(AppActions.NEW_PUBLIC_TEXT_POST)
         .map(toPayload)
