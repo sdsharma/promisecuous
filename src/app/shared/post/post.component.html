@@ -1,31 +1,31 @@
 <div class="card">
-<div class="card-block">
-    <b>{{post.content}}</b>
-</div>
-
-<div class="card-footer">
-    <div clss="btn-group btn-outline-primary">
-        <button *ngIf="!liked()" class="btn" (click)="like()">
-            <clr-icon shape="thumbs-up"></clr-icon>
-            Like ({{getLikeCount()}})
-        </button>
-        <button *ngIf="liked()" class="btn" (click)="like()">
-            <clr-icon shape="thumbs-up"></clr-icon>
-            Unlike ({{getLikeCount()}})
-        </button>
-        <button class="btn" (click)="showCommentBox = !showCommentBox">
-            <clr-icon shape="talk-bubbles"></clr-icon>
-            Comments ({{getCommentCount()}})
-        </button>
+    <div class="card-block">
+        <b *ngIf="post.type == 'text'">{{post.content}}</b>
+        <img class="img-restrict" *ngIf="post.type == 'photo'" src={{post.content}} />
     </div>
-    <div class="card-block" *ngIf="showCommentBox">
-        <ng-container *ngFor="let com of post.comments">
-             <p class="label label-info large-text">{{com.content}}</p>
-             <br>
-        </ng-container>
-        <br>
-        <input class="comment-input" type="text" [(ngModel)]="comment" placeholder="Share your comments here...">
-        <button type="button" class="btn btn-primary btn-sm btn-comment" (click)="postComment()">Comment</button>
-    </div>
+    <div class="card-footer">
+        <div clss="btn-group btn-outline-primary">
+            <button *ngIf="!liked()" class="btn" (click)="like()">
+                <clr-icon shape="thumbs-up"></clr-icon>
+                Like ({{getLikeCount()}})
+            </button>
+            <button *ngIf="liked()" class="btn" (click)="like()">
+                <clr-icon shape="thumbs-up"></clr-icon>
+                Unlike ({{getLikeCount()}})
+            </button>
+            <button class="btn" (click)="showCommentBox = !showCommentBox">
+                <clr-icon shape="talk-bubbles"></clr-icon>
+                Comments ({{getCommentCount()}})
+            </button>
+        </div>
+        <div class="card-block" *ngIf="showCommentBox">
+            <ng-container *ngFor="let com of post.comments">
+                 <p class="label label-info large-text">{{com.content}}</p>
+                 <br>
+            </ng-container>
+            <br>
+            <input class="comment-input" type="text" [(ngModel)]="comment" placeholder="Share your comments here...">
+            <button type="button" class="btn btn-primary btn-sm btn-comment" (click)="postComment()">Comment</button>
+        </div>
     </div>
 </div>

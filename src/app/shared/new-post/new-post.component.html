@@ -18,7 +18,15 @@
         <div *ngIf="textActive">
             <textarea rows="3" placeholder="Share your story here..." [(ngModel)]="postText"></textarea>
         </div>
-        <div *ngIf="!textActive">
+        <div *ngIf="!textActive" class="centered">
+            <img [src]="postImage" *ngIf="postImage" class="img-restrict">
+            <br *ngIf="postImage">
+            <label class="custom-file-upload">
+                <input type="file" imageUpload [resizeOptions]="options" (imageSelected)="selectedImage($event)">
+                <span *ngIf="!postImage"><clr-icon shape="upload" size="16"></clr-icon>Upload Photo</span>
+                <span *ngIf="postImage"><clr-icon shape="upload" size="16"></clr-icon>Change Photo</span>
+
+            </label>
         </div>
     </div>
     <div class="card-footer align-right">

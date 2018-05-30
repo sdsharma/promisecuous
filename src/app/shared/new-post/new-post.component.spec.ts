@@ -7,6 +7,7 @@ import { appReducers } from '../functions/reducerTest';
 import { StoreModule } from '@ngrx/store';
 import { ClarityModule } from 'clarity-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImageUploadModule } from 'ng2-imageupload';
 
 describe('NewPostComponent', () => {
   let component: NewPostComponent;
@@ -18,7 +19,8 @@ describe('NewPostComponent', () => {
         StoreModule.provideStore(appReducers),
         ClarityModule.forRoot(),
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ImageUploadModule
       ],
       declarations: [ NewPostComponent ]
     })
