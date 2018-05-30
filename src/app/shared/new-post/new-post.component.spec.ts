@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DebugElement, Component, CUSTOM_ELEMENTS_SCHEMA, NgZone } from '@angular/core';
 import { NewPostComponent } from './new-post.component';
 import { appReducers } from '../functions/reducerTest';
 import { StoreModule } from '@ngrx/store';

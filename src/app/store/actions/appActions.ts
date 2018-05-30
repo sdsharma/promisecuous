@@ -1,5 +1,6 @@
 export class AppActions {
   static LOGIN: string = "LOGIN";
+  static LOGIN_GOOGLE: string = "LOGIN_GOOGLE";
   static LOGGED_IN: string = "LOGGED_IN";
   static LOGIN_FAILED: string = "LOGIN_FAILED";
   static LOGOUT: string = "LOGOUT";

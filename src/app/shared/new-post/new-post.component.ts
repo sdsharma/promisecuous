@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState, UserState } from '../../store/state';
 import { AppActions } from '../../store/actions/appActions';
@@ -21,7 +21,7 @@ export class NewPostComponent implements OnInit {
     resizeMaxWidth: 400
   };
 
-  constructor(private store: Store<AppState>) { }
+  constructor(public zone: NgZone, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.select((state: AppState) => {
@@ -54,5 +54,11 @@ export class NewPostComponent implements OnInit {
     }
     this.postImage = imageResult.resized && imageResult.resized.dataURL || imageResult.dataURL;
     this.postImageFile = imageResult;
+  }
+
+  changeTab(bool: boolean): void {
+    this.zone.run(() => {
+      this.textActive = bool;
+    });
   }
 }

@@ -4,8 +4,6 @@ import { AppState, UserState } from '../store/state';
 import { AppActions } from '../store/actions/appActions';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +20,7 @@ export class LoginComponent implements OnInit {
   loggedIn: boolean = false;
   loginFail: boolean = false;
 
-  constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
+  constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit(): void {
     this.store.select((state: AppState) => {
@@ -43,10 +41,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginGoogle(): void {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((credentials) => {
-      this.store.dispatch({type: AppActions.LOGGED_IN, payload: credentials.user});
-    }).catch((error) => {
-      this.store.dispatch({type: AppActions.LOGIN_FAILED});
-    });
+    this.store.dispatch({type: AppActions.LOGIN_GOOGLE});
   }
 }
