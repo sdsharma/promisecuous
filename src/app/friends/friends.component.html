@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="row timeline-pad">
+    <ng-container *ngFor="let user of users | async">
+        <div class="col-xs-3" >    
+            <div class="card">
+                <div class="card-header center-text">
+                        <img *ngIf="user.photoURL" src={{user.photoURL}} class="avatar-constrain" />
+                        <clr-icon *ngIf="!user.photoURL" shape="user" size="100" class="no-photo-constrain"></clr-icon>
+                </div>
+                <div class="card-block">
+                    <div class="card-title center-text" *ngIf="user.displayName">
+                        {{user.displayName}}
+                    </div>
+                    <div class="card-title center-text"  *ngIf="!user.displayName">
+                        {{user.email}}
+                    </div>
+                </div>
+                <div class="card-footer center-text">
+                    <button class="btn btn-sm btn-link">Add Friend</button>
+                
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -99,6 +99,17 @@ export class AppEffects {
           });
       });
 
+    @Effect() getnewfriends$ = this.action$
+    .ofType(AppActions.GET_NEW_FRIENDS)
+    .map(toPayload)
+    .switchMap(payload => {
+        let newFriends = this.db.list('/');
+        return Observable.of({
+            type: AppActions.RECEIVED_NEW_FRIENDS,
+            payload: newFriends
+        });
+    });
+
   @Effect() storecredentials$ = this.action$
       .ofType(AppActions.STORE_CREDENTIALS)
       .map(toPayload)

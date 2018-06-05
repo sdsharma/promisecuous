@@ -26,4 +26,8 @@ export class HeaderComponent implements OnInit {
   home(): void {
     this.router.navigate(['/admin/' + this.subroute]);
   }
+
+  friends(): void {
+    this.router.navigate(['friends']);
+  }
 }

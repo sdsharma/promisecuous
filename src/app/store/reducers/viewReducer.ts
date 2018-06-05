@@ -14,6 +14,9 @@ export function ViewReducer(state: ViewState = INITIAL_VIEW_STATE, action: Actio
         case AppActions.RECEIVED_TIMELINE_POSTS:
           newState.timelinePosts = action.payload;
           return newState;
+        case AppActions.RECEIVED_NEW_FRIENDS:
+          newState.newFriends = action.payload;
+          return newState;
         case AppActions.LIKE_TIMELINE_POST:
           let containedIndex = action.payload.post.likes.indexOf(action.payload.uid);
           if (containedIndex > -1) {
