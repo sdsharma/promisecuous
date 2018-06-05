@@ -12,4 +12,5 @@ export class AppActions {
   static RECEIVED_TIMELINE_POSTS: string = "RECEIVED_TIMELINE_POSTS";
   static LIKE_TIMELINE_POST: string = "LIKE_TIMELINE_POST";
   static POST_COMMENT: string = "POST_COMMENT";
+  static STORE_CREDENTIALS: string = "STORE_CREDENTIALS";
 }

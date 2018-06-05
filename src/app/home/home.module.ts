@@ -6,7 +6,6 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HomeRoutes } from './home.routing';
-import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
   imports: [
@@ -14,11 +13,7 @@ import { AdsenseModule } from 'ng2-adsense';
     ClarityModule.forRoot(),
     RouterModule.forChild(HomeRoutes),
     FormsModule,
-    SharedModule.forRoot(),
-    AdsenseModule.forRoot({
-      adClient: 'ca-pub-7640562161899788',
-      adSlot: 2930227358,
-    }),
+    SharedModule.forRoot()
   ],
   declarations: [
     HomeComponent
