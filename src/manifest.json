@@ -1,0 +1,26 @@
+{
+  "name": "Promisecuous",
+  "short_name": "Promisecuous",
+  "description": "A private social network",  
+  "icons": [{
+    "src": "images/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "images/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "images/icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }, {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#FAFAFA",
+  "theme_color": "#004B6D"
+}
