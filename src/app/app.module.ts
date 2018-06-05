@@ -17,15 +17,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UserReducer } from './store/reducers/userReducer';
 import { ViewReducer } from './store/reducers/viewReducer';
-import { DataReducer } from './store/reducers/dataReducer';
 import { AppEffects } from './store/effects/appEffects';
 import { AccessControlGuard } from './shared/guards/accesscontrol.service';
 import { environment } from '../environments/environment';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 const reducers = {
   user: UserReducer,
-  view: ViewReducer,
-  data: DataReducer
+  view: ViewReducer
 };
 
 const effects = [
@@ -60,6 +60,7 @@ export function appReducers(state: AppState = INITIAL_APP_STATE, action: any) {
         StoreDevtoolsModule.instrumentOnlyWithExtension({
           maxAge: 3
         }),
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics])
     ],
     providers: [AccessControlGuard],
     bootstrap: [AppComponent]

@@ -22,18 +22,12 @@ export const INITIAL_VIEW_STATE: ViewState = {
   timelinePosts: null
 };
 
-export interface DataState {}
-
-export const INITIAL_DATA_STATE: DataState = {};
-
 export interface AppState {
   user: UserState;
   view: ViewState;
-  data: DataState;
 }
 
 export const INITIAL_APP_STATE: AppState = {
    user: INITIAL_USER_STATE,
-   view: INITIAL_VIEW_STATE,
-   data: INITIAL_DATA_STATE
+   view: INITIAL_VIEW_STATE
 };
