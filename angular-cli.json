@@ -9,7 +9,8 @@
             "outDir": "dist",
             "assets": [
                 "images",
-                "favicon.ico"
+                "favicon.ico",
+                "manifest.json"
             ],
             "index": "index.html",
             "main": "main.ts",
@@ -17,6 +18,7 @@
             "tsconfig": "tsconfig.json",
             "prefix": "app",
             "mobile": false,
+            "serviceWorker": true,
             "styles": [
                 "../node_modules/clarity-icons/clarity-icons.min.css",
                 "../node_modules/clarity-ui/clarity-ui.min.css",
