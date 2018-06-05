@@ -13,31 +13,19 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class HomeComponent implements OnInit {
 
-  subroute: string;
   posts: FirebaseListObservable<any[]>;
   userData: any;
 
-  constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.select((state: AppState) => {
       return state;
     }).subscribe((state: AppState) => {
-      this.subroute = state.view.subroute;
       this.posts = state.view.timelinePosts;
       this.userData = state.user.userData;
     });
 
     this.store.dispatch({type: AppActions.GET_TIMELINE_POSTS, payload: this.userData.uid});
-  }
-
-  logout(): void {
-    this.afAuth.auth.signOut();
-    this.store.dispatch({type: AppActions.LOGOUT, payload: null});
-    this.router.navigate(['login']);
-  }
-
-  changeCategory(category: string): void {
-    this.store.dispatch({type: AppActions.SET_SUB_ROUTE, payload: category});
   }
 }

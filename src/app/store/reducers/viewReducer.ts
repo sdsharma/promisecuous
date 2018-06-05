@@ -6,9 +6,6 @@ export function ViewReducer(state: ViewState = INITIAL_VIEW_STATE, action: Actio
     // clones object for modification and return
     const newState: ViewState = Object.assign({}, state);
     switch (action.type) {
-        case AppActions.SET_SUB_ROUTE:
-          newState.subroute = action.payload;
-          return newState;
         case AppActions.SUCCESSFUL_POST:
           return newState;
         case AppActions.RECEIVED_TIMELINE_POSTS:
