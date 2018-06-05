@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/state';
 import { AppActions } from '../store/actions/appActions';
+import { Router } from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +16,7 @@ export class HomeComponent implements OnInit {
   posts: FirebaseListObservable<any[]>;
   userData: any;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.store.select((state: AppState) => {
@@ -24,5 +27,11 @@ export class HomeComponent implements OnInit {
     });
 
     this.store.dispatch({type: AppActions.GET_TIMELINE_POSTS, payload: this.userData.uid});
+  }
+
+  logout(): void {
+    this.afAuth.auth.signOut();
+    this.store.dispatch({type: AppActions.LOGOUT, payload: null});
+    this.router.navigate(['login']);
   }
 }
