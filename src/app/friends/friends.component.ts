@@ -24,7 +24,7 @@ export class FriendsComponent implements OnInit {
     }).subscribe((state: AppState) => {
       this.users = state.view.newFriends;
       this.userData = state.user.userData;
-      if (this.users) {
+      if (this.users && this.userData) {
         this.users.subscribe(users => {
           this.userProfile = users.filter(user => user.$key === this.userData.uid)[0];
         });
