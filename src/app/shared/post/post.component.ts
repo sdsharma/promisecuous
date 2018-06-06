@@ -11,8 +11,6 @@ import { AppActions } from '../../store/actions/appActions';
 export class PostComponent implements OnInit {
   @Input() post: any = {};
   @Input() uid: string = '';
-  @Input() displayName: string = '';
-  @Input() displayImage: string = null;
   showCommentBox: boolean = false;
   comment: string = '';
 

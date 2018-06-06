@@ -14,8 +14,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   logout(): void {
     this.afAuth.auth.signOut();
@@ -24,6 +23,10 @@ export class HeaderComponent implements OnInit {
   }
 
   home(): void {
-    this.router.navigate(['/admin/' + this.subroute]);
+    this.router.navigate(['home']);
+  }
+
+  friends(): void {
+    this.router.navigate(['friends']);
   }
 }

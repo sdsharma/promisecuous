@@ -4,7 +4,6 @@ export class AppActions {
   static LOGGED_IN: string = "LOGGED_IN";
   static LOGIN_FAILED: string = "LOGIN_FAILED";
   static LOGOUT: string = "LOGOUT";
-  static SET_SUB_ROUTE: string = "SET_SUB_ROUTE";
   static NEW_PUBLIC_TEXT_POST: string = "NEW_PUBLIC_TEXT_POST";
   static NEW_PUBLIC_PHOTO_POST: string = "NEW_PUBLIC_PHOTO_POST";
   static SUCCESSFUL_POST: string = "SUCCESSFUL_POST";
@@ -13,4 +12,8 @@ export class AppActions {
   static LIKE_TIMELINE_POST: string = "LIKE_TIMELINE_POST";
   static POST_COMMENT: string = "POST_COMMENT";
   static STORE_CREDENTIALS: string = "STORE_CREDENTIALS";
+  static GET_NEW_FRIENDS: string = "GET_NEW_FRIENDS";
+  static RECEIVED_NEW_FRIENDS: string = "RECEIVED_NEW_FRIENDS";
+  static ADD_FRIEND: string = "ADD_FRIEND";
+  static REMOVE_FRIEND: string = "REMOVE_FRIEND";
 }

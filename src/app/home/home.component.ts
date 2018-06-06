@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../store/state';
 import { AppActions } from '../store/actions/appActions';
 import { Router } from '@angular/router';
-import { FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
@@ -13,8 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class HomeComponent implements OnInit {
 
-  subroute: string;
-  posts: FirebaseListObservable<any[]>;
+  posts: Observable<any[]>;
   userData: any;
 
   constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
@@ -23,7 +21,6 @@ export class HomeComponent implements OnInit {
     this.store.select((state: AppState) => {
       return state;
     }).subscribe((state: AppState) => {
-      this.subroute = state.view.subroute;
       this.posts = state.view.timelinePosts;
       this.userData = state.user.userData;
     });
@@ -35,9 +32,5 @@ export class HomeComponent implements OnInit {
     this.afAuth.auth.signOut();
     this.store.dispatch({type: AppActions.LOGOUT, payload: null});
     this.router.navigate(['login']);
-  }
-
-  changeCategory(category: string): void {
-    this.store.dispatch({type: AppActions.SET_SUB_ROUTE, payload: category});
   }
 }
