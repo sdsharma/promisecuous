@@ -1,7 +1,8 @@
 <app-header></app-header>
 <div class="row timeline-pad">
     <ng-container *ngFor="let user of users | async">
-        <div class="col-xs-3" >    
+
+        <div class="col-xs-3" *ngIf="user.$key != userData.uid" >    
             <div class="card">
                 <div class="card-header center-text">
                         <img *ngIf="user.photoURL" src={{user.photoURL}} class="avatar-constrain" />
@@ -15,10 +16,14 @@
                         {{user.email}}
                     </div>
                 </div>
-                <div class="card-footer center-text">
-                    <button class="btn btn-sm btn-link">Add Friend</button>
-                
+                <div class="card-footer center-text" *ngIf="!isAdded(user.$key); else remove;">
+                    <button class="btn btn-sm btn-link" class="btn" (click)="addFriends(user)">Add Friend</button>
                 </div>
+                <ng-template #remove>
+                    <div class="card-footer center-text">
+                        <button class="btn btn-sm btn-link" class="btn" (click)="removeFriend(user)">Remove</button>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </ng-container>

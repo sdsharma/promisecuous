@@ -110,6 +110,41 @@ export class AppEffects {
         });
     });
 
+    @Effect() addfriend$ = this.action$
+      .ofType(AppActions.ADD_FRIEND)
+      .map(toPayload)
+      .switchMap(payload => {
+          let friends = this.db.list(payload.uid + '/friends/');
+          if(payload.friend.posts){
+            delete payload.friend.posts;
+          }
+          if(payload.friend.friends){
+            delete payload.friend.friends;
+          }
+          payload.friend.uid = payload.friend.$key;
+          friends.push(payload.friend);
+          let friendsOfFriends = this.db.list(payload.friend.uid + '/friends/');
+          friendsOfFriends.push(payload.self);
+          return Observable.of({
+              type: AppActions.SUCCESSFUL_POST,
+              payload: null
+          });
+      });
+
+  @Effect() removefriend$ = this.action$
+      .ofType(AppActions.REMOVE_FRIEND)
+      .map(toPayload)
+      .switchMap(payload => {
+          let friends = this.db.list(payload.selfuid + '/friends/');
+          friends.remove(payload.friendKey);
+          let friendsOfFriends = this.db.list(payload.frienduid + '/friends/');
+          friendsOfFriends.remove(payload.selfKey);
+          return Observable.of({
+              type: AppActions.SUCCESSFUL_POST,
+              payload: null
+          });
+      });
+
   @Effect() storecredentials$ = this.action$
       .ofType(AppActions.STORE_CREDENTIALS)
       .map(toPayload)
@@ -138,4 +173,5 @@ export class AppEffects {
       }
     );
   }
+  
 }

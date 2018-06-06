@@ -15,4 +15,6 @@ export class AppActions {
   static STORE_CREDENTIALS: string = "STORE_CREDENTIALS";
   static GET_NEW_FRIENDS: string = "GET_NEW_FRIENDS";
   static RECEIVED_NEW_FRIENDS: string = "RECEIVED_NEW_FRIENDS";
+  static ADD_FRIEND: string = "ADD_FRIEND";
+  static REMOVE_FRIEND: string = "REMOVE_FRIEND";
 }
