@@ -5,6 +5,8 @@ import { AppActions } from '../store/actions/appActions';
 import { Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs';
+import 'rxjs/observable/combineLatest';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +16,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class HomeComponent implements OnInit {
 
   subroute: string;
-  posts: FirebaseListObservable<any[]>;
+  posts: any[];
   userData: any;
+  combinedPosts: any[];
 
   constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
 
@@ -26,6 +29,11 @@ export class HomeComponent implements OnInit {
       this.subroute = state.view.subroute;
       this.posts = state.view.timelinePosts;
       this.userData = state.user.userData;
+      if (this.posts) {
+         console.log(this.posts);
+          this.combinedPosts = this.combinePosts(this.posts);
+          console.log(this.combinedPosts);
+      }
     });
 
     this.store.dispatch({type: AppActions.GET_TIMELINE_POSTS, payload: this.userData.uid});
@@ -39,5 +47,9 @@ export class HomeComponent implements OnInit {
 
   changeCategory(category: string): void {
     this.store.dispatch({type: AppActions.SET_SUB_ROUTE, payload: category});
+  }
+
+  combinePosts(posts: any[]): Observable<any> {
+    return Observable.combineLatest(...posts);
   }
 }

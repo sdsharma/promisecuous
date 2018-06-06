@@ -92,10 +92,16 @@ export class AppEffects {
       .ofType(AppActions.GET_TIMELINE_POSTS)
       .map(toPayload)
       .switchMap(payload => {
+          let friends = [];
+          let friendsPosts = [];
           let posts = this.db.list(payload + '/posts/', {query: {orderByChild: 'timestamp'}});
+          let friendsList = this.db.list(payload + '/friends/').subscribe(result => {result.forEach(res => {friends.push(res.uid)})});
+          friends.push(payload);
+          friends.forEach(uid => {friendsPosts.push(this.db.list(uid + '/posts', {query: {orderByChild: 'timestamp'}}))});
+
           return Observable.of({
               type: AppActions.RECEIVED_TIMELINE_POSTS,
-              payload: posts
+              payload: friendsPosts
           });
       });
 
@@ -173,5 +179,5 @@ export class AppEffects {
       }
     );
   }
-  
+
 }

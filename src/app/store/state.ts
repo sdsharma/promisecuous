@@ -15,7 +15,7 @@ export const INITIAL_USER_STATE: UserState = {
 };
 
 export interface ViewState {
-  timelinePosts: FirebaseListObservable<any[]>;
+  timelinePosts: any[];
   newFriends: FirebaseListObservable<any[]>;
 }
 

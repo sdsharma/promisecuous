@@ -22,9 +22,9 @@
     </div>
     <div class="col-xs-6 timeline">
         <new-post></new-post>
-        <ng-container *ngFor="let post of posts | async">
+        <!-- <ng-container *ngFor="let post of posts | async">
             <user-post [post]="post" [uid]="userData.uid" [displayName]="userData.displayName || userData.email" [displayImage]="userData.photoURL || null"></user-post>
-        </ng-container>
+        </ng-container> -->
     </div>
     <div class="col-xs-3">
     	<div class="card card-block ad-container">
