@@ -34,13 +34,13 @@ export class NewPostComponent implements OnInit {
   createPost(): void {
     if (this.textActive) {
       this.store.dispatch({type: AppActions.NEW_PUBLIC_TEXT_POST, payload: {
-        uid: this.credentials.uid,
+        user: this.credentials,
         content: this.postText
       }});
       this.postText = '';
     } else if (this.postImage && this.postImageFile) {
       this.store.dispatch({type: AppActions.NEW_PUBLIC_PHOTO_POST, payload: {
-        uid: this.credentials.uid,
+        user: this.credentials,
         content: this.postImageFile
       }});
       this.postImage = null;

@@ -17,11 +17,11 @@
                     </div>
                 </div>
                 <div class="card-footer center-text" *ngIf="!isAdded(user.$key); else remove;">
-                    <button class="btn btn-sm btn-link" class="btn" (click)="addFriends(user)">Add Friend</button>
+                    <button class="btn btn-sm btn-link" class="btn" (click)="addFriend(user)">Add Friend</button>
                 </div>
                 <ng-template #remove>
                     <div class="card-footer center-text">
-                        <button class="btn btn-sm btn-link" class="btn" (click)="removeFriend(user)">Remove</button>
+                        <button class="btn btn-sm btn-link" class="btn" (click)="removeFriend(user)">Remove Friend</button>
                     </div>
                 </ng-template>
             </div>

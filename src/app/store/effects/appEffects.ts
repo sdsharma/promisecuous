@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/observable/of';
+import 'rxjs/observable/combineLatest';
 import { Http } from '@angular/http';
 import { AppActions } from '../actions/appActions';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -54,13 +55,17 @@ export class AppEffects {
       .ofType(AppActions.NEW_PUBLIC_TEXT_POST)
       .map(toPayload)
       .switchMap(payload => {
-          let posts = this.db.list(payload.uid + '/posts/');
+          let posts = this.db.list(payload.user.uid + '/posts/');
           posts.push({
             type: 'text',
             timestamp: Date.now(),
             content: payload.content,
             comments: [],
-            likes: []
+            likes: [],
+            displayName: payload.user.displayName,
+            email: payload.user.email,
+            photoURL: payload.user.photoURL,
+            uid: payload.user.uid
           });
           return Observable.of({
               type: AppActions.SUCCESSFUL_POST,
@@ -72,13 +77,17 @@ export class AppEffects {
       .ofType(AppActions.NEW_PUBLIC_PHOTO_POST)
       .map(toPayload)
       .switchMap(payload => {
-          let posts = this.db.list(payload.uid + '/posts/');
+          let posts = this.db.list(payload.user.uid + '/posts/');
           posts.push({
             type: 'photo',
             timestamp: Date.now(),
             content: payload.content.resized && payload.content.resized.dataURL || payload.content.dataURL,
             comments: [],
-            likes: []
+            likes: [],
+            displayName: payload.user.displayName,
+            email: payload.user.email,
+            photoURL: payload.user.photoURL,
+            uid: payload.user.uid
           }).then(post => {
             this.pushFileToStorage(payload.content.file, post);
           });
@@ -92,39 +101,73 @@ export class AppEffects {
       .ofType(AppActions.GET_TIMELINE_POSTS)
       .map(toPayload)
       .switchMap(payload => {
-          let friends = [];
-          let friendsPosts = [];
-          let posts = this.db.list(payload + '/posts/', {query: {orderByChild: 'timestamp'}});
-          let friendsList = this.db.list(payload + '/friends/').subscribe(result => {result.forEach(res => {friends.push(res.uid)})});
-          friends.push(payload);
-          friends.forEach(uid => {friendsPosts.push(this.db.list(uid + '/posts', {query: {orderByChild: 'timestamp'}}))});
-
-          return Observable.of({
-              type: AppActions.RECEIVED_TIMELINE_POSTS,
-              payload: friendsPosts
+        return this.db.list(payload + '/friends/')
+          .switchMap(result => {
+            let friendsPosts = [];
+            let postsObservable = null;
+            result.forEach(res => {
+              friendsPosts.push(this.db.list(res.uid + '/posts', {query: {orderByChild: 'timestamp'}}));
+            });
+            friendsPosts.push(this.db.list(payload + '/posts/', {query: {orderByChild: 'timestamp'}}));
+            postsObservable = Observable.combineLatest(...friendsPosts);
+            return Observable.of({
+                type: AppActions.RECEIVED_TIMELINE_POSTS,
+                payload: postsObservable
+            });
           });
       });
 
     @Effect() getnewfriends$ = this.action$
-    .ofType(AppActions.GET_NEW_FRIENDS)
-    .map(toPayload)
-    .switchMap(payload => {
-        let newFriends = this.db.list('/');
-        return Observable.of({
-            type: AppActions.RECEIVED_NEW_FRIENDS,
-            payload: newFriends
-        });
-    });
+      .ofType(AppActions.GET_NEW_FRIENDS)
+      .map(toPayload)
+      .switchMap(payload => {
+          let newFriends = this.db.list('/');
+          return Observable.of({
+              type: AppActions.RECEIVED_NEW_FRIENDS,
+              payload: newFriends
+          });
+      });
+
+    @Effect() liketimelinepost$ = this.action$
+      .ofType(AppActions.LIKE_TIMELINE_POST)
+      .map(toPayload)
+      .switchMap(payload => {
+          let containedIndex = payload.post.likes.indexOf(payload.uid);
+          if (containedIndex > -1) {
+            payload.post.likes.splice(containedIndex, 1);
+          } else {
+            payload.post.likes.push(payload.uid);
+          }
+          let post = this.db.object(payload.post.uid + '/posts/' + payload.post.$key);
+          post.update({ likes: payload.post.likes });
+          return Observable.of({
+              type: AppActions.SUCCESSFUL_POST,
+              payload: null
+          });
+      });
+
+    @Effect() postcomment$ = this.action$
+      .ofType(AppActions.POST_COMMENT)
+      .map(toPayload)
+      .switchMap(payload => {
+          payload.post.comments.push({timestamp: Date.now(), content: payload.comment, uid: payload.uid});
+          let post = this.db.object(payload.post.uid + '/posts/' + payload.post.$key);
+          post.update({ comments: payload.post.comments });
+          return Observable.of({
+              type: AppActions.SUCCESSFUL_POST,
+              payload: null
+          });
+      });
 
     @Effect() addfriend$ = this.action$
       .ofType(AppActions.ADD_FRIEND)
       .map(toPayload)
       .switchMap(payload => {
           let friends = this.db.list(payload.uid + '/friends/');
-          if(payload.friend.posts){
+          if (payload.friend.posts) {
             delete payload.friend.posts;
           }
-          if(payload.friend.friends){
+          if (payload.friend.friends) {
             delete payload.friend.friends;
           }
           payload.friend.uid = payload.friend.$key;
