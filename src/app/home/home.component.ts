@@ -33,4 +33,8 @@ export class HomeComponent implements OnInit {
     this.store.dispatch({type: AppActions.LOGOUT, payload: null});
     this.router.navigate(['login']);
   }
+
+  friends(): void {
+    this.router.navigate(['friends']);
+  }
 }

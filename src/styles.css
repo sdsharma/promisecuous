@@ -7,3 +7,11 @@
 button:focus {
 	outline: 0;
 }
+
+@media screen and (max-width: 544px) {
+	.main-container .header .branding {
+	    max-width: 9rem;
+	    min-width: 0;
+	    overflow: hidden;
+	}
+}

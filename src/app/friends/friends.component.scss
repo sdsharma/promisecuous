@@ -18,3 +18,15 @@
     border: 1px solid;
     border-radius: 50%;
 }
+
+.ellipsify {
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) { 
+	.expand-mobile {
+		flex: 0 0 50% !important;
+    	max-width: 50% !important;
+	}
+}

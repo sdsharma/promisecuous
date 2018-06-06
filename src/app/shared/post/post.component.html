@@ -2,7 +2,7 @@
     <div class="card-header">
         <clr-icon *ngIf="!post.photoURL" shape="user" size="20" class="no-photo-constrain"></clr-icon>
         <img *ngIf="post.photoURL" src={{post.photoURL}} class="avatar-constrain" />
-        {{post.displayName || post.email}}
+        <span class="ellipsify">{{post.displayName || post.email}}</span>
     </div>
     <div class="card-block">
         <h5 *ngIf="post.type == 'text'" class="remove-margin">{{post.content}}</h5>
