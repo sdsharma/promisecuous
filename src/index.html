@@ -12,8 +12,6 @@
     <link rel="apple-touch-icon" sizes="512x512" href="images/icon-512.png">
     <style>
 	    .spinner-top {
-	      position: fixed;
-	      display: inline-block;
 	      min-height: 63px;
 	      min-width: 63px;
 	      height: 63px;
@@ -25,8 +23,12 @@
 	      background: url('./images/loading.svg');
 	      text-indent: 100%;
 	      overflow: hidden;
-	      left: 48vw;
-	      top: 45vh;
+	      margin-top: 41vh;
+	      display: inline-block;
+	    }
+	    .spinner-container {
+	    	width: 100%;
+	    	text-align: center;
 	    }
 	  </style>
 	<meta name="theme-color" content="#004B6D">
@@ -41,7 +43,9 @@
 		ga('create', 'UA-110250350-1', 'auto');
 	</script>
 	<my-app>
-		<span class="spinner-top">Loading...</span>
+		<div class="spinner-container">
+			<span class="spinner-top">Loading...</span>
+		</div>
 	</my-app>
 </body>
 </html>

@@ -1,26 +1,26 @@
 <app-header></app-header>
 <div class="row timeline-pad">
-    <div class="col-xs-3">
+    <div class="col-xs-3 hide-mobile ">
     	<div class="card">
             <div class="card-header center-text">
                 <img *ngIf="userData.photoURL" src={{userData.photoURL}} class="avatar-constrain" />
                 <clr-icon *ngIf="!userData.photoURL" shape="user" size="100" class="no-photo-constrain"></clr-icon>
             </div>
             <div class="card-block">
-                <div class="card-title center-text" *ngIf="userData.displayName">
+                <div class="card-title center-text ellipsify" *ngIf="userData.displayName">
                     {{userData.displayName}}
                 </div>
-                <div class="card-title center-text" *ngIf="!userData.displayName">
+                <div class="card-title center-text ellipsify" *ngIf="!userData.displayName">
                     {{userData.email}}
                 </div>
             </div>
             <div class="card-footer center-text">
-                <button class="btn btn-sm btn-link">View Friends</button>
+                <button class="btn btn-sm btn-link" (click)="friends()">View Friends</button>
                 <button class="btn btn-sm btn-link" (click)="logout()">Log Out</button>
             </div>
         </div>
     </div>
-    <div class="col-xs-6 timeline">
+    <div class="col-xs-6 timeline expand-mobile">
         <new-post></new-post>
         <ng-container *ngFor="let userposts of posts | async">
             <ng-container *ngFor="let post of userposts">
@@ -28,7 +28,7 @@
             </ng-container>
         </ng-container>
     </div>
-    <div class="col-xs-3">
+    <div class="col-xs-3 hide-mobile">
     	<div class="card card-block ad-container">
             <h2>Ad goes here</h2>
 	    </div>

@@ -29,3 +29,19 @@
     border: 1px solid;
     border-radius: 50%;
 }
+
+.ellipsify {
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) { 
+	.hide-mobile {
+		display: none;
+	}
+
+	.expand-mobile {
+		flex: 0 0 100% !important;
+    	max-width: 100% !important;
+	}
+}

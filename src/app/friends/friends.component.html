@@ -1,18 +1,17 @@
 <app-header></app-header>
 <div class="row timeline-pad">
     <ng-container *ngFor="let user of users | async">
-
-        <div class="col-xs-3" *ngIf="user.$key != userData.uid" >    
+        <div class="col-xs-3 expand-mobile" *ngIf="user.$key != userData.uid" >    
             <div class="card">
                 <div class="card-header center-text">
                         <img *ngIf="user.photoURL" src={{user.photoURL}} class="avatar-constrain" />
                         <clr-icon *ngIf="!user.photoURL" shape="user" size="100" class="no-photo-constrain"></clr-icon>
                 </div>
                 <div class="card-block">
-                    <div class="card-title center-text" *ngIf="user.displayName">
+                    <div class="card-title center-text ellipsify" *ngIf="user.displayName">
                         {{user.displayName}}
                     </div>
-                    <div class="card-title center-text"  *ngIf="!user.displayName">
+                    <div class="card-title center-text ellipsify"  *ngIf="!user.displayName">
                         {{user.email}}
                     </div>
                 </div>
