@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState, UserState } from '../store/state';
 import { AppActions } from '../store/actions/appActions';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   loggedIn: boolean = false;
   loginFail: boolean = false;
 
-  constructor(private store: Store<AppState>, private router: Router) { }
+  constructor(private store: Store<AppState>, private router: Router, public zone: NgZone) { }
 
   ngOnInit(): void {
     this.store.select((state: AppState) => {
@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
         this.loggedIn = user.loggedIn;
         this.loginFail = user.loginFail;
         if (this.loggedIn) {
-          this.router.navigate(['/home']);
+          this.zone.run(() => {
+            this.router.navigate(['/home']);
+          });
         }
     });
   }

@@ -5,10 +5,10 @@
     <div class="card-block">
         <ul class="nav" role="tablist">
             <li role="presentation" class="nav-item">
-                <button class="btn btn-link nav-link" [class.active]="textActive" aria-selected="true" type="button" (click)="changeTab(true)">Text</button>
+                <button class="btn btn-link nav-link" [class.active]="textActive" aria-selected="true" type="button" (click)="textActive = true">Text</button>
             </li>
             <li role="presentation" class="nav-item">
-                <button class="btn btn-link nav-link" [class.active]="!textActive" aria-selected="false" type="button" (click)="changeTab(false)">Photo</button>
+                <button class="btn btn-link nav-link" [class.active]="!textActive" aria-selected="false" type="button" (click)="textActive = false">Photo</button>
             </li>
         </ul>
     </div>

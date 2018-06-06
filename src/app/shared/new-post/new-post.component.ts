@@ -55,10 +55,4 @@ export class NewPostComponent implements OnInit {
     this.postImage = imageResult.resized && imageResult.resized.dataURL || imageResult.dataURL;
     this.postImageFile = imageResult;
   }
-
-  changeTab(bool: boolean): void {
-    this.zone.run(() => {
-      this.textActive = bool;
-    });
-  }
 }
