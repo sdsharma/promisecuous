@@ -150,7 +150,7 @@ export class AppEffects {
       .ofType(AppActions.POST_COMMENT)
       .map(toPayload)
       .switchMap(payload => {
-          payload.post.comments.push({timestamp: Date.now(), content: payload.comment, uid: payload.uid});
+          payload.post.comments.push({timestamp: Date.now(), content: payload.comment, uid: payload.uid, name: payload.name});
           let post = this.db.object(payload.post.uid + '/posts/' + payload.post.$key);
           post.update({ comments: payload.post.comments });
           return Observable.of({

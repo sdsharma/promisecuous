@@ -11,6 +11,7 @@ import { AppActions } from '../../store/actions/appActions';
 export class PostComponent implements OnInit {
   @Input() post: any = {};
   @Input() uid: string = '';
+  @Input() displayName: string = '';
   showCommentBox: boolean = false;
   comment: string = '';
 
@@ -22,7 +23,8 @@ export class PostComponent implements OnInit {
     if ( !this.post.comments ) {
       this.post.comments = [];
     }
-    this.store.dispatch({type: AppActions.POST_COMMENT, payload: {comment: this.comment, post: this.post, uid: this.uid}});
+    this.store.dispatch({type: AppActions.POST_COMMENT,
+      payload: {comment: this.comment, post: this.post, uid: this.uid, name: this.displayName}});
   }
 
   getCommentCount(): number {
