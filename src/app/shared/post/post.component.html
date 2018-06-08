@@ -25,7 +25,7 @@
         </div>
         <div class="card-block" *ngIf="showCommentBox">
             <ng-container *ngFor="let com of post.comments">
-                 <p class="label label-info large-text">{{com.content}}</p>
+                 <p class="label label-info large-text">{{com.displayName}} &nbsp; {{com.content}}</p>
                  <br>
             </ng-container>
             <br>
