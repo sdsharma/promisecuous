@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ClarityModule } from 'clarity-angular';
@@ -22,6 +22,7 @@ import { AccessControlGuard } from './shared/guards/accesscontrol.service';
 import { environment } from '../environments/environment';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import * as Raven from 'raven-js';
 
 const reducers = {
   user: UserReducer,
@@ -36,6 +37,16 @@ const combinedReducers: ActionReducer<AppState> = combineReducers(reducers);
 
 export function appReducers(state: AppState = INITIAL_APP_STATE, action: any) {
   return combinedReducers(state, action);
+}
+
+Raven
+  .config('https://7f5b1190d02a4c9387b2c55cc3e4e80e@sentry.io/1223771')
+  .install();
+
+export class RavenErrorHandler implements ErrorHandler {
+  handleError(err: any): void {
+    Raven.captureException(err);
+  }
 }
 
 @NgModule({
@@ -62,7 +73,7 @@ export function appReducers(state: AppState = INITIAL_APP_STATE, action: any) {
         }),
         Angulartics2Module.forRoot([Angulartics2GoogleAnalytics])
     ],
-    providers: [AccessControlGuard],
+    providers: [AccessControlGuard, { provide: ErrorHandler, useClass: RavenErrorHandler }],
     bootstrap: [AppComponent]
 })
 export class AppModule {

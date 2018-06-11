@@ -22,7 +22,9 @@ export class PostComponent implements OnInit {
     if ( !this.post.comments ) {
       this.post.comments = [];
     }
-    this.store.dispatch({type: AppActions.POST_COMMENT, payload: {comment: this.comment, post: this.post, uid: this.uid}});
+    if (this.comment !== '') {
+      this.store.dispatch({type: AppActions.POST_COMMENT, payload: {comment: this.comment, post: this.post, uid: this.uid}});
+    }
   }
 
   getCommentCount(): number {
