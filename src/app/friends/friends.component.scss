@@ -24,6 +24,10 @@
     text-overflow: ellipsis;
 }
 
+.full-width {
+	width: 100%;
+}
+
 @media (max-width: 768px) { 
 	.expand-mobile {
 		flex: 0 0 50% !important;

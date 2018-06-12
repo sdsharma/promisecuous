@@ -15,6 +15,7 @@ export class FriendsComponent implements OnInit {
   users: FirebaseListObservable<any[]>;
   userData: any;
   userProfile: any = null;
+  userCount: number = 0;
 
   constructor(private store: Store<AppState>) { }
 
@@ -26,11 +27,11 @@ export class FriendsComponent implements OnInit {
       this.userData = state.user.userData;
       if (this.users && this.userData) {
         this.users.subscribe(users => {
+          this.userCount = users.length - 1;
           this.userProfile = users.filter(user => user.$key === this.userData.uid)[0];
         });
       }
     });
-
     this.store.dispatch({type: AppActions.GET_NEW_FRIENDS});
   }
 
