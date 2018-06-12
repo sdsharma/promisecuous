@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/state';
 import { AppActions } from '../../store/actions/appActions';
+import { decryptField } from '../../shared/functions/encrypt';
+
 
 @Component({
   selector: 'user-post',
@@ -64,5 +66,9 @@ export class PostComponent implements OnInit {
     } else {
       this.store.dispatch({ type: AppActions.OPEN_POST, payload: this.post.$key });
     }
+  }
+
+  decryptPostField(fieldUID: string, content: string): string {
+    return decryptField(fieldUID, content);
   }
 }

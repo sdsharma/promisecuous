@@ -12,6 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { generateUUID } from '../../shared/functions/uuid';
+import { encryptField } from '../../shared/functions/encrypt';
 
 @Injectable()
 export class AppEffects {
@@ -59,7 +60,7 @@ export class AppEffects {
           posts.push({
             type: 'text',
             timestamp: Date.now(),
-            content: payload.content,
+            content: encryptField(payload.user.uid, payload.content),
             comments: [],
             likes: [],
             displayName: payload.user.displayName,
@@ -78,10 +79,11 @@ export class AppEffects {
       .map(toPayload)
       .switchMap(payload => {
           let posts = this.db.list(payload.user.uid + '/posts/');
+          let photoURL = payload.content.resized && payload.content.resized.dataURL || payload.content.dataURL;
           posts.push({
             type: 'photo',
             timestamp: Date.now(),
-            content: payload.content.resized && payload.content.resized.dataURL || payload.content.dataURL,
+            content: encryptField(payload.user.uid, photoURL),
             comments: [],
             likes: [],
             displayName: payload.user.displayName,
@@ -152,7 +154,7 @@ export class AppEffects {
       .switchMap(payload => {
           payload.post.comments.push({
             timestamp: Date.now(),
-            content: payload.comment,
+            content: encryptField(payload.userData.uid, payload.comment),
             uid: payload.userData.uid,
             displayName: payload.userData.displayName,
             email: payload.userData.email,
@@ -249,5 +251,4 @@ export class AppEffects {
       }
     );
   }
-
 }

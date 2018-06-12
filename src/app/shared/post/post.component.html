@@ -5,8 +5,8 @@
         <span class="ellipsify">{{post.displayName || post.email}}</span>
     </div>
     <div class="card-block">
-        <h5 *ngIf="post.type == 'text'" class="remove-margin">{{post.content}}</h5>
-        <img class="img-restrict" *ngIf="post.type == 'photo'" src={{post.content}} />
+        <h5 *ngIf="post.type == 'text'" class="remove-margin">{{decryptPostField(post.uid, post.content)}}</h5>
+        <img class="img-restrict" *ngIf="post.type == 'photo'" src={{decryptPostField(post.uid, post.content)}} />
     </div>
     <div class="card-footer">
         <div clss="btn-group btn-outline-primary">
@@ -30,7 +30,7 @@
                     <img *ngIf="com.photoURL" src={{post.photoURL}} class="avatar-constrain-comment" />
                     <strong>{{com.displayName || com.email}}</strong>
                 </p>
-                <p class="label label-info large-text">{{com.content}}</p>
+                <p class="label label-info large-text">{{decryptPostField(com.uid, com.content)}}</p>
                 <div class="comment-divider"></div>
             </ng-container>
             <br>
