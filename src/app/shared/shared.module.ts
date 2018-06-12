@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ClarityModule } from 'clarity-angular';
 import { HeaderComponent } from './header/header.component';
 import { PeterTestComponent } from './peter-test/peter-test.component';
+import { AdsComponent } from './ads/ads.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { PostComponent } from './post/post.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,14 +21,16 @@ import { ImageUploadModule } from 'ng2-imageupload';
     HeaderComponent,
     PeterTestComponent,
     NewPostComponent,
-    PostComponent
+    PostComponent,
+    AdsComponent
 ],
   exports: [
     CommonModule,
     HeaderComponent,
     PeterTestComponent,
     NewPostComponent,
-    PostComponent
+    PostComponent,
+    AdsComponent
   ]
 })
 export class SharedModule {

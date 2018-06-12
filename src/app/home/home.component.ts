@@ -12,7 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class HomeComponent implements OnInit {
 
-  posts: Observable<any[]>;
+  posts: any[];
   userData: any;
 
   constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }

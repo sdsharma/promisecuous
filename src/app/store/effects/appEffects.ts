@@ -105,7 +105,7 @@ export class AppEffects {
           .switchMap(result => {
             let friendsPosts = [];
             let postsObservable = null;
-            result.forEach(res => {
+            (<any[]>result).forEach(res => {
               friendsPosts.push(this.db.list(res.uid + '/posts', {query: {orderByChild: 'timestamp'}}));
             });
             friendsPosts.push(this.db.list(payload + '/posts/', {query: {orderByChild: 'timestamp'}}));
@@ -208,7 +208,7 @@ export class AppEffects {
 
   constructor(private action$: Actions, private _http: Http, private afAuth: AngularFireAuth, private db: AngularFireDatabase) { }
 
-  pushFileToStorage(file: File, post: any): string {
+  pushFileToStorage(file: File, post: any): void {
     const storageRef = firebase.storage().ref();
     const uuid = generateUUID();
     const uploadTask = storageRef.child(uuid + '_'  + file.name).put(file);
