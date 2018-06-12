@@ -34,4 +34,43 @@ describe('PostComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('gets the comment count', () => {
+    let count = component.getCommentCount();
+    expect(count).toEqual(0);
+  });
+
+  it('gets the updated comment count', () => {
+    component.post.comments = [];
+    component.post.comments.push(0);
+    let count = component.getCommentCount();
+    expect(count).toEqual(1);
+  });
+
+  it('checks the liked status', () => {
+    let liked = component.liked();
+    expect(liked).toEqual(false);
+  });
+
+  it('checks the liked status based on the uid', () => {
+    component.post.likes = [];
+    component.post.likes.push('me');
+    component.userData = {};
+    component.userData.uid = 'me';
+    let liked = component.liked();
+    expect(liked).toEqual(true);
+  });
+
+  it('gets the like count', () => {
+    let count = component.getLikeCount();
+    expect(count).toEqual(0);
+  });
+
+  it('gets the updated like count', () => {
+    component.post.likes = [];
+    component.post.likes.push('me');
+    let count = component.getLikeCount();
+    expect(count).toEqual(1);
+  });
+
 });
