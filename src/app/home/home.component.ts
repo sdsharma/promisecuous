@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   posts: any[];
   userData: any;
+  openedPosts: string[] = [];
 
   constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
 
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
     }).subscribe((state: AppState) => {
       this.posts = state.view.timelinePosts;
       this.userData = state.user.userData;
+      this.openedPosts = state.view.openedComments;
     });
 
     this.store.dispatch({type: AppActions.GET_TIMELINE_POSTS, payload: this.userData.uid});
@@ -36,5 +38,13 @@ export class HomeComponent implements OnInit {
 
   friends(): void {
     this.router.navigate(['friends']);
+  }
+
+  checkIfOpened(postID: string): boolean {
+    if (this.openedPosts.indexOf(postID) > -1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

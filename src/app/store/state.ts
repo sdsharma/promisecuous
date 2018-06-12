@@ -19,11 +19,13 @@ export const INITIAL_USER_STATE: UserState = {
 export interface ViewState {
   timelinePosts: any[];
   newFriends: FirebaseListObservable<any[]>;
+  openedComments: string[];
 }
 
 export const INITIAL_VIEW_STATE: ViewState = {
   timelinePosts: null,
-  newFriends: null
+  newFriends: null,
+  openedComments: []
 };
 
 export interface AppState {

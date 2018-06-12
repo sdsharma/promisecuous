@@ -11,7 +11,7 @@ import { AppActions } from '../../store/actions/appActions';
 export class PostComponent implements OnInit {
   @Input() post: any = {};
   @Input() userData: any;
-  showCommentBox: boolean = false;
+  @Input() showCommentBox: boolean = false;
   comment: string = '';
 
   constructor(private store: Store<AppState>) { }
@@ -55,6 +55,14 @@ export class PostComponent implements OnInit {
       return this.post.likes.length;
     } else {
       return 0;
+    }
+  }
+
+  displayCommentBox(): void {
+    if (this.showCommentBox) {
+      this.store.dispatch({ type: AppActions.CLOSE_POST, payload: this.post.$key });
+    } else {
+      this.store.dispatch({ type: AppActions.OPEN_POST, payload: this.post.$key });
     }
   }
 }

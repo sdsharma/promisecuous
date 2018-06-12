@@ -18,4 +18,6 @@ export class AppActions {
   static RECEIVED_NEW_FRIENDS: string = "RECEIVED_NEW_FRIENDS";
   static ADD_FRIEND: string = "ADD_FRIEND";
   static REMOVE_FRIEND: string = "REMOVE_FRIEND";
+  static OPEN_POST: string = "OPEN_POST";
+  static CLOSE_POST: string = "CLOSE_POST";
 }
