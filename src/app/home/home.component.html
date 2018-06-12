@@ -24,7 +24,7 @@
         <new-post></new-post>
         <ng-container *ngFor="let userposts of posts | async">
             <ng-container *ngFor="let post of userposts">
-                <user-post [post]="post" [uid]="userData.uid"></user-post>
+                <user-post [post]="post" [userData]="userData"></user-post>
             </ng-container>
         </ng-container>
     </div>

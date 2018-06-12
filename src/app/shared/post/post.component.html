@@ -25,8 +25,13 @@
         </div>
         <div class="card-block" *ngIf="showCommentBox">
             <ng-container *ngFor="let com of post.comments">
-                 <p class="label label-info large-text">{{com.content}}</p>
-                 <br>
+                <p class="comment-name">
+                    <clr-icon *ngIf="!com.photoURL" shape="user" size="20" class="no-photo-constrain-comment"></clr-icon>
+                    <img *ngIf="com.photoURL" src={{post.photoURL}} class="avatar-constrain-comment" />
+                    <strong>{{com.displayName || com.email}}</strong>
+                </p>
+                <p class="label label-info large-text">{{com.content}}</p>
+                <br>
             </ng-container>
             <br>
             <input class="comment-input" type="text" [(ngModel)]="comment" placeholder="Share your comments here...">

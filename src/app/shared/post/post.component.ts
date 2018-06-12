@@ -10,7 +10,7 @@ import { AppActions } from '../../store/actions/appActions';
 })
 export class PostComponent implements OnInit {
   @Input() post: any = {};
-  @Input() uid: string = '';
+  @Input() userData: any;
   showCommentBox: boolean = false;
   comment: string = '';
 
@@ -23,7 +23,7 @@ export class PostComponent implements OnInit {
       this.post.comments = [];
     }
     if (this.comment !== '') {
-      this.store.dispatch({type: AppActions.POST_COMMENT, payload: {comment: this.comment, post: this.post, uid: this.uid}});
+      this.store.dispatch({type: AppActions.POST_COMMENT, payload: {comment: this.comment, post: this.post, userData: this.userData}});
     }
   }
 
@@ -39,11 +39,11 @@ export class PostComponent implements OnInit {
     if ( !this.post.likes ) {
       this.post.likes = [];
     }
-    this.store.dispatch({type: AppActions.LIKE_TIMELINE_POST, payload: {post: this.post, uid: this.uid}});
+    this.store.dispatch({type: AppActions.LIKE_TIMELINE_POST, payload: {post: this.post, uid: this.userData.uid}});
   }
 
   liked(): boolean {
-    if ( this.post.likes && this.post.likes.indexOf(this.uid) > -1 ) {
+    if ( this.post.likes && this.post.likes.indexOf(this.userData.uid) > -1 ) {
       return true;
     } else {
       return false;

@@ -7,10 +7,10 @@
 }
 
 .large-text {
-	font-size: .5rem;
+	font-size: .6rem;
 	word-break: break-all;
 	height: auto;
-	line-height: .5rem;
+	line-height: .6rem;
 	white-space: normal;
 }
 
@@ -38,4 +38,21 @@
 .ellipsify {
 	overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.comment-name {
+	font-size: .6rem;
+}
+
+.no-photo-constrain-comment {
+	padding: 2px;
+    border: 1px solid;
+    border-radius: 50%;
+    margin-top: -2px;
+}
+
+.avatar-constrain-comment {
+	max-width: 20px;
+	border-radius: 50%;
+    margin-top: -2px;
 }
