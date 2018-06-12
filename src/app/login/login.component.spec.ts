@@ -8,6 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LoginComponent } from './login.component';
 import { appReducers } from '../shared/functions/reducerTest';
 import { ClarityModule } from 'clarity-angular';
+import { NgxStripeModule } from 'ngx-stripe';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -19,7 +20,8 @@ describe('LoginComponent', () => {
         ReactiveFormsModule,
         StoreModule.provideStore(appReducers),
         RouterTestingModule,
-        ClarityModule.forRoot()
+        ClarityModule.forRoot(),
+        NgxStripeModule.forRoot('pk_test_XsHBWcn3WCRdEjyHO80eUJ3u')
       ],
       declarations: [ LoginComponent ]
     })

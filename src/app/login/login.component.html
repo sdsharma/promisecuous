@@ -5,7 +5,7 @@
             Promisecuous
             <h5 class="welcome callout"><clr-icon shape="lock" class="align-icon"></clr-icon>Encrypted, <clr-icon shape="eye-hide" class="align-icon"></clr-icon>Private, <clr-icon shape="firewall" class="align-icon"></clr-icon>Safe</h5>
         </label>
-        <div class="login-group">
+        <div class="login-group" *ngIf="!loggedIn">
             <div>
                 <input class="username" type="text" placeholder="Email" formControlName="email">
             </div>
@@ -15,6 +15,12 @@
             <p *ngIf="loginFail == true">Login Failed</p>
             <button type="submit" class="btn btn-success login-btn" (click)="login()">Login</button>
             <button class="btn btn-warning login-btn" (click)="loginGoogle()">Login with Google</button>
+        </div>
+        <div class="login-group" *ngIf="loggedIn && !paid">
+            <p class="payment-text">Our annual membership cost $9.99/year and allows for unfettered access to all of our services and provides a truly private social networking experience</p>
+            <p class="payment-text" *ngIf="paymentFail == true">Payment Failed, Try Again</p>
+            <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+            <button type="submit" class="btn btn-success login-btn" (click)="pay()">Pay to Continue</button>
         </div>
     </form>
 </div>

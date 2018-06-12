@@ -4,6 +4,7 @@ export interface UserState {
   loggedIn: boolean;
   loginFail: boolean;
   userData: any;
+  paid: boolean;
 }
 
 export const INITIAL_USER_STATE: UserState = {
@@ -11,7 +12,8 @@ export const INITIAL_USER_STATE: UserState = {
   loginFail: false,
   userData: {
     uid: ''
-  }
+  },
+  paid: false
 };
 
 export interface ViewState {

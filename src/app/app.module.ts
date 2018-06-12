@@ -22,6 +22,7 @@ import { AccessControlGuard } from './shared/guards/accesscontrol.service';
 import { environment } from '../environments/environment';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { NgxStripeModule } from 'ngx-stripe';
 import * as Raven from 'raven-js';
 
 const reducers = {
@@ -71,7 +72,8 @@ export class RavenErrorHandler implements ErrorHandler {
         StoreDevtoolsModule.instrumentOnlyWithExtension({
           maxAge: 3
         }),
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics])
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+        NgxStripeModule.forRoot('pk_test_XsHBWcn3WCRdEjyHO80eUJ3u')
     ],
     providers: [AccessControlGuard, { provide: ErrorHandler, useClass: RavenErrorHandler }],
     bootstrap: [AppComponent]

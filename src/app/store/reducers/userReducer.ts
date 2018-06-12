@@ -6,9 +6,16 @@ export function UserReducer(state: UserState = INITIAL_USER_STATE, action: Actio
     // clones object for modification and return
     const newState: UserState = Object.assign({}, state);
     switch (action.type) {
-        case AppActions.LOGGED_IN:
+        case AppActions.LOGGED_IN_PAID:
           newState.loggedIn = true;
           newState.loginFail = false;
+          newState.paid = true;
+          newState.userData = action.payload;
+          return newState;
+        case AppActions.LOGGED_IN_UNPAID:
+          newState.loggedIn = true;
+          newState.loginFail = false;
+          newState.paid = false;
           newState.userData = action.payload;
           return newState;
         case AppActions.LOGIN_FAILED:

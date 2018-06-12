@@ -1,8 +1,10 @@
 export class AppActions {
   static LOGIN: string = "LOGIN";
   static LOGIN_GOOGLE: string = "LOGIN_GOOGLE";
-  static LOGGED_IN: string = "LOGGED_IN";
+  static LOGGED_IN_PAID: string = "LOGGED_IN_PAID";
+  static LOGGED_IN_UNPAID: string = "LOGGED_IN_UNPAID";
   static LOGIN_FAILED: string = "LOGIN_FAILED";
+  static USER_PAID: string = "USER_PAID";
   static LOGOUT: string = "LOGOUT";
   static NEW_PUBLIC_TEXT_POST: string = "NEW_PUBLIC_TEXT_POST";
   static NEW_PUBLIC_PHOTO_POST: string = "NEW_PUBLIC_PHOTO_POST";

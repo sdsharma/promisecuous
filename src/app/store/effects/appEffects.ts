@@ -205,10 +205,30 @@ export class AppEffects {
       .ofType(AppActions.STORE_CREDENTIALS)
       .map(toPayload)
       .switchMap(payload => {
+          return this.db.object(payload.uid)
+            .switchMap(user => {
+              if (user.$exists()) {
+                return Observable.of({
+                  type: AppActions.LOGGED_IN_PAID,
+                  payload: payload
+                });
+              } else {
+                return Observable.of({
+                  type: AppActions.LOGGED_IN_UNPAID,
+                  payload: payload
+                });
+              }
+            });
+      });
+
+  @Effect() userpaid$ = this.action$
+      .ofType(AppActions.USER_PAID)
+      .map(toPayload)
+      .switchMap(payload => {
           let user = this.db.object(payload.uid);
           user.update({ displayName: payload.displayName, photoURL: payload.photoURL, email: payload.email });
           return Observable.of({
-            type: AppActions.LOGGED_IN,
+            type: AppActions.LOGGED_IN_PAID,
             payload: payload
           });
       });

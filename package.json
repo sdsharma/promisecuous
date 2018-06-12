@@ -53,6 +53,7 @@
     "firebase": "3.6.6",
     "mutationobserver-shim": "0.3.2",
     "ng2-imageupload": "1.4.2",
+    "ngx-stripe": "^0.7.1",
     "raven-js": "^3.26.2",
     "rxjs": "5.5.6",
     "ts-helpers": "1.1.2",
