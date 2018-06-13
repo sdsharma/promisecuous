@@ -13,7 +13,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../../environments/environment';
 
 describe('HeaderComponent', () => {
-  let component: HeaderComponent;
+  let component: any;
   let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async(() => {
@@ -39,5 +39,23 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should navigate home', () => {
+    spyOn(component.router, 'navigate');
+    component.home();
+    expect(component.router.navigate).toHaveBeenCalledWith(['home']);
+  });
+
+  it('should navigate friends', () => {
+    spyOn(component.router, 'navigate');
+    component.friends();
+    expect(component.router.navigate).toHaveBeenCalledWith(['friends']);
+  });
+
+  it('should navigate logout', () => {
+    spyOn(component.router, 'navigate');
+    component.logout();
+    expect(component.router.navigate).toHaveBeenCalledWith(['login']);
   });
 });
