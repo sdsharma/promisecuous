@@ -50,7 +50,7 @@ export class FriendsComponent implements OnInit {
 
   isAdded(uid: string): boolean {
     let result = false;
-    if (this.userProfile.friends) {
+    if (this.userProfile && this.userProfile.friends) {
       Object.keys(this.userProfile.friends).forEach((key) => {
         if (this.userProfile.friends[key].uid === uid) {
           result = true;
