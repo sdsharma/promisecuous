@@ -129,7 +129,7 @@ Payments are handled using the Stripe API and the application doesn't allow user
 ## Advertisements
 As a requirement of this project, third party ads have been removed from the application, instead we have created an ad component with the following API:
 
-    <app-ads height="300px" adLink="https://nike.com" imageURL="https://nike.com/ad.png"></app-ads>
+    <app-ads height="300" adLink="https://nike.com" imageURL="https://nike.com/ad.png"></app-ads>
 
 This ad component means that advertising companies would explicitly have to make a deal with us to run their ads on our service. Additionally, any links that are used in the ads are marked with a noreferrer and blank target so that the links open in a new tab and the company advertising doesn't know where the user came from.
 
