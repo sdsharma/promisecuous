@@ -1,4 +1,3 @@
-import * as sjcl from 'sjcl';
 import { encryptField, decryptField } from './encrypt';
 
 describe('Encrypt', () => {
