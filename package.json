@@ -13,6 +13,7 @@
     "build-dev": "ng build --dev --aot=false",
     "start-prod": "ng serve --prod --aot=false",
     "coverage": "ng test --code-coverage --reporters=teamcity,coverage-istanbul",
+    "serve-coverage": "ng test --code-coverage --reporters=teamcity,coverage-istanbul && http-server ./coverage/",
     "documentation": "compodoc -p src/tsconfig.json && compodoc -s src/tsconfig.json"
   },
   "repository": {
@@ -73,6 +74,7 @@
     "codelyzer": "^4.0.1",
     "enhanced-resolve": "^3.3.0",
     "firebase-tools": "3.18.4",
+    "http-server": "^0.11.1",
     "jasmine-core": "^2.8.0",
     "jasmine-spec-reporter": "^4.2.1",
     "karma": "^1.7.1",
