@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         this.loginFail = user.loginFail;
         this.paid = user.paid;
         this.userData = user.userData;
-        if (this.loggedIn && this.paid) {
+        if (this.loggedIn && this.paid && this.router.url === '/login') {
           this.zone.run(() => {
             this.router.navigate(['/home']);
           });
