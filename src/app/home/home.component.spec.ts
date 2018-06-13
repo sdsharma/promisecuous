@@ -12,10 +12,14 @@ import { ClarityModule } from 'clarity-angular';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 
 describe('HomeComponent', () => {
-  let component: HomeComponent;
+  let component: any;
   let fixture: ComponentFixture<HomeComponent>;
+  let debugEl: DebugElement;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,15 +35,26 @@ describe('HomeComponent', () => {
       declarations: [ HomeComponent ]
     })
     .compileComponents();
+   
+
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    // spyOn(component.router, 'navigate');
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should navigate', () => {
+      //fixture = TestBed.createComponent(HomeComponent);
+      spyOn(component.router, 'navigate');
+      component.logout();  
+      expect(component.router.navigate).toHaveBeenCalledWith(['login']);
+  });
+
 });

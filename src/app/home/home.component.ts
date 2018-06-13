@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   posts: any[];
   userData: any;
   openedPosts: string[] = [];
+  
 
   constructor(private store: Store<AppState>, private router: Router, private afAuth: AngularFireAuth) { }
 
