@@ -91,7 +91,7 @@ export class AppEffects {
             photoURL: payload.user.photoURL,
             uid: payload.user.uid
           }).then(post => {
-            this.pushFileToStorage(payload.content.file, post);
+            this.pushFileToStorage(payload.content.file, post, payload.user.uid);
           });
           return Observable.of({
               type: AppActions.SUCCESSFUL_POST,
@@ -237,7 +237,7 @@ export class AppEffects {
 
   constructor(private action$: Actions, private _http: Http, private afAuth: AngularFireAuth, private db: AngularFireDatabase) { }
 
-  pushFileToStorage(file: File, post: any): void {
+  pushFileToStorage(file: File, post: any, uid: string): void {
     const storageRef = firebase.storage().ref();
     const uuid = generateUUID();
     const uploadTask = storageRef.child(uuid + '_'  + file.name).put(file);
@@ -247,7 +247,7 @@ export class AppEffects {
         console.log(error);
       },
       () => {
-        post.update({content: uploadTask.snapshot.downloadURL});
+        post.update({content: encryptField(uid, uploadTask.snapshot.downloadURL)});
       }
     );
   }

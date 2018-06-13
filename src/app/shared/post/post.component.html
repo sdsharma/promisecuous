@@ -6,7 +6,7 @@
     </div>
     <div class="card-block">
         <h5 *ngIf="post.type == 'text'" class="remove-margin">{{decryptPostField(post.uid, post.content)}}</h5>
-        <img class="img-restrict" *ngIf="post.type == 'photo'" src={{decryptPostField(post.uid, post.content)}} />
+        <img class="img-restrict" *ngIf="post.type == 'photo'" [src]="decryptPostField(post.uid, post.content)" />
     </div>
     <div class="card-footer">
         <div clss="btn-group btn-outline-primary">
