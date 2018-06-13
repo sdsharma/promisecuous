@@ -36,4 +36,32 @@ describe('NewPostComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('testing text posting mode', () => {
+    component.textActive = true;
+    component.postText = "should be cleared";
+    component.postImage = "should stay";
+    component.createPost();
+    expect(component.postText).toEqual("");
+    expect(component.postImage).toEqual("should stay");
+  });
+
+  it('testing photo posting mode', () => {
+    component.textActive = false;
+    component.postText = "should stay";
+    component.postImage = "should be cleared";
+    component.createPost();
+    expect(component.postText).toEqual("should stay");
+    expect(component.postImage).toEqual("should be cleared");
+  });
+
+  it('testing selectedImage', () => {
+    let imgResult = {
+      file: null,
+      url: "url",
+    };
+    component.selectedImage(imgResult);
+    expect(component.postImage).toEqual(undefined);
+    expect(component.postImageFile).toEqual(imgResult);
+  });
 });
