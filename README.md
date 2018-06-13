@@ -4,6 +4,8 @@
 
 [Production Link](https://promisecuous-prod.firebaseapp.com)
 
+[Our Final Video](https://youtu.be/a-_k3lOxX88)
+
 ## Compatibility Notes
 This project currently doesn't implement any major polyfills other than those for ES6 functionality. To ensure compatibility with our application, **use the latest version of Chrome**, on both mobile and desktop. Additionally, ensure that you are using a **Node v8+** environment to make sure that all the Angular packages work.
 

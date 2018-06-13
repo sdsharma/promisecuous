@@ -27,7 +27,7 @@
             <ng-container *ngFor="let com of post.comments">
                 <p class="comment-name">
                     <clr-icon *ngIf="!com.photoURL" shape="user" size="20" class="no-photo-constrain-comment"></clr-icon>
-                    <img *ngIf="com.photoURL" src={{post.photoURL}} class="avatar-constrain-comment" />
+                    <img *ngIf="com.photoURL" src={{com.photoURL}} class="avatar-constrain-comment" />
                     <strong>{{com.displayName || com.email}}</strong>
                 </p>
                 <p class="label label-info large-text">{{decryptPostField(com.uid, com.content)}}</p>
